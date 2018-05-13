@@ -13,7 +13,7 @@ class Movie{
     var imageURI : String
     var description: String
     var year: Int
-    var author:Person
+    var director:Person
     var genre:Genre
     
     
@@ -23,7 +23,7 @@ class Movie{
         self.description = description
         self.year = year
         self.genre = genre
-        self.author = author
+        self.director = author
     }
     
 }

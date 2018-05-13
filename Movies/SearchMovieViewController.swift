@@ -23,10 +23,20 @@ class SearchMovieViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onSearchButtonTapped(_ sender: Any) {
+    @IBAction func onSearchButtonTapped(_: Any) {
         //TODO kroz konstruktor posalji model kontroleru
-        let vc = MovieViewController()
+      
+        //let vc = EditViewController()
+        //self.navigationController?.pushViewController(vc, animated: true)
+        
+        
+        let REST = RestMock()
+        let model = REST.getMovie(title: "Inception")
+        
+    
+        let vc = MovieDetailsViewController(model:model)
         self.navigationController?.pushViewController(vc, animated: true)
-    }
+ 
+ }
     
 }
