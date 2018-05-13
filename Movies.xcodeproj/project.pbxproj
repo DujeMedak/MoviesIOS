@@ -17,6 +17,9 @@
 		A51DB15A20A8890200230295 /* MovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51DB15820A8890200230295 /* MovieViewController.xib */; };
 		A51DB15D20A88A2600230295 /* SearchMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB15B20A88A2600230295 /* SearchMovieViewController.swift */; };
 		A51DB15E20A88A2600230295 /* SearchMovieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51DB15C20A88A2600230295 /* SearchMovieViewController.xib */; };
+		A51DB16220A8A63100230295 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB16120A8A63100230295 /* Movie.swift */; };
+		A51DB16420A8A95500230295 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB16320A8A95500230295 /* Person.swift */; };
+		A51DB16620A8AA4000230295 /* RestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB16520A8AA4000230295 /* RestMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,9 @@
 		A51DB15820A8890200230295 /* MovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieViewController.xib; sourceTree = "<group>"; };
 		A51DB15B20A88A2600230295 /* SearchMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieViewController.swift; sourceTree = "<group>"; };
 		A51DB15C20A88A2600230295 /* SearchMovieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchMovieViewController.xib; sourceTree = "<group>"; };
+		A51DB16120A8A63100230295 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		A51DB16320A8A95500230295 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		A51DB16520A8AA4000230295 /* RestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestMock.swift; sourceTree = "<group>"; };
 		C4D8CB3DAFBBFDE9F7C2424E /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6B17D303AC1B7E0CA8621A /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +75,8 @@
 		A51DB14420A8873700230295 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				A51DB16020A8A60C00230295 /* Services */,
+				A51DB15F20A8A5F800230295 /* Models */,
 				A51DB14520A8873700230295 /* AppDelegate.swift */,
 				A51DB15B20A88A2600230295 /* SearchMovieViewController.swift */,
 				A51DB15C20A88A2600230295 /* SearchMovieViewController.xib */,
@@ -81,6 +89,23 @@
 				A51DB15120A8873700230295 /* Info.plist */,
 			);
 			path = Movies;
+			sourceTree = "<group>";
+		};
+		A51DB15F20A8A5F800230295 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A51DB16120A8A63100230295 /* Movie.swift */,
+				A51DB16320A8A95500230295 /* Person.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A51DB16020A8A60C00230295 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A51DB16520A8AA4000230295 /* RestMock.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B3D58DE27A022F3410C084BB /* Frameworks */ = {
@@ -217,10 +242,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51DB16420A8A95500230295 /* Person.swift in Sources */,
 				A51DB14820A8873700230295 /* ViewController.swift in Sources */,
+				A51DB16620A8AA4000230295 /* RestMock.swift in Sources */,
 				A51DB14620A8873700230295 /* AppDelegate.swift in Sources */,
 				A51DB15920A8890200230295 /* MovieViewController.swift in Sources */,
 				A51DB15D20A88A2600230295 /* SearchMovieViewController.swift in Sources */,
+				A51DB16220A8A63100230295 /* Movie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
