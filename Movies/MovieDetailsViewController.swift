@@ -50,16 +50,16 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
          director.text = model!.director.name + " " + model!.director.surname
          movieDescription.text = model!.description
          movieTitle.text = model!.title
-         //let mImage: UIImage = UIImage(named: model!.imageURI)!
         
          let url = URL(string: model!.imageURI)
         
         
         movieImage.kf.setImage(with: url, completionHandler: {
             (image, error, cacheType, imageUrl) in
+            //is this part executed if the image is cached??
             self.img = image
         })
-         //movieImage.kf.setImage(with: url)
+        
         
     }
     
@@ -84,7 +84,7 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     }
     
     @objc func onImageViewTap(_ sender:AnyObject){
-        let vc = ImageDetailViewController()
+        let vc = ImageDetailViewController(movieImg: self.img)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

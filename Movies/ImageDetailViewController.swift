@@ -10,11 +10,23 @@ import UIKit
 
 class ImageDetailViewController: UIViewController{
 
+    var movieImg:UIImage?
     
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var movieImage: UIImageView!
     
+    convenience init() {
+        self.init(movieImg: nil)
+    }
+    
+    init(movieImg: UIImage?) {
+        self.movieImg = movieImg
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +35,7 @@ class ImageDetailViewController: UIViewController{
         scrollView.maximumZoomScale = 5.0
         
         scrollView.delegate = self
+        movieImage.image = self.movieImg
     
     }
 
