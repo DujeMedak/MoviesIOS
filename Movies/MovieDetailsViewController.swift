@@ -13,7 +13,22 @@ class MovieDetailsViewController: UIViewController {
     var model:Movie?
     
     
-     convenience init() {
+    @IBOutlet weak var year: UILabel!
+    
+    @IBOutlet weak var genre: UILabel!
+    
+    @IBOutlet weak var director: UILabel!
+    
+
+    @IBOutlet weak var movieTitle: UILabel!
+    
+    @IBOutlet weak var movieDescription: UILabel!
+    
+    
+    @IBOutlet weak var movieImage: UIImageView!
+    
+    
+    convenience init() {
      self.init(model: nil)
      }
      
@@ -28,17 +43,43 @@ class MovieDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "edit", style: .done, target: self, action: #selector(onEditButtonTap))
+        
+        
+        movieImage.isUserInteractionEnabled = true
+        movieImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MovieDetailsViewController.onImageViewTap(_:))))
+        
          year.text = String(model!.year)
          genre.text = model!.genre.rawValue
          director.text = model!.director.name + " " + model!.director.surname
-         */
-        // Do any additional setup after loading the view.
+         movieDescription.text = model!.description
+         movieTitle.text = model!.title
+         var mImage: UIImage = UIImage(named: model!.imageURI)!
+         movieImage.image = mImage
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintAdjustmentMode = .normal
+        self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
+    }
+    
+    @objc func onEditButtonTap(sender: AnyObject) {
+        
+        let vc = EditViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func onImageViewTap(_ sender:AnyObject){
+        let vc = ImageDetailViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 
