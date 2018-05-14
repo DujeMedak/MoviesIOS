@@ -14,7 +14,7 @@ class EditViewController: UIViewController {
     
     @IBOutlet weak var movieDescriptionView: UITextView!
     
-    var movieDescription:String?
+    var movieDescription:String? = ""
     
     
     convenience init() {
@@ -23,7 +23,7 @@ class EditViewController: UIViewController {
     
     init(editDelegate: EditViewControllerDelegate?, textToEdit:String?) {
         self.editDelegate = editDelegate
-        //self.movieDescription = textToEdit
+        self.movieDescription = textToEdit
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -33,7 +33,7 @@ class EditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //movieDescriptionView.text = movieDescription
+        movieDescriptionView.text = movieDescription
     }
     
     override func didReceiveMemoryWarning() {

@@ -53,6 +53,9 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        movieDescription.text = model!.description
+        //deselecting the edit button from the navigation bar (just color)
         self.navigationController?.navigationBar.tintAdjustmentMode = .normal
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
@@ -75,6 +78,11 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     
     func plotEdited(withText text: String){
         model?.description = text
+        
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
 }
