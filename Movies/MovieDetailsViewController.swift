@@ -59,7 +59,7 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     
     @objc func onEditButtonTap(sender: AnyObject) {
         
-        let vc = EditDescriptionViewController(editDelegate: self as EditViewControllerDelegate)
+        let vc = EditViewController(editDelegate: self as EditViewControllerDelegate, textToEdit:model!.description)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -74,7 +74,7 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     }
     
     func plotEdited(withText text: String){
-        //TODO change text
+        model?.description = text
     }
     
 }
