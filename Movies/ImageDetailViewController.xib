@@ -1,13 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageDetailViewController" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ImageDetailViewController" customModule="Movies" customModuleProvider="target">
             <connections>
+                <outlet property="movieImage" destination="hgW-oN-DjD" id="tWJ-nc-Aod"/>
+                <outlet property="scrollView" destination="hMU-J7-aFU" id="zqB-w0-R2e"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -15,8 +21,36 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMU-J7-aFU">
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="whiplash" translatesAutoresizingMaskIntoConstraints="NO" id="hgW-oN-DjD">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="hgW-oN-DjD" firstAttribute="centerX" secondItem="hMU-J7-aFU" secondAttribute="centerX" id="3W8-Qx-GDB"/>
+                        <constraint firstItem="hgW-oN-DjD" firstAttribute="top" secondItem="hMU-J7-aFU" secondAttribute="top" id="QVD-qZ-QIC"/>
+                        <constraint firstAttribute="trailing" secondItem="hgW-oN-DjD" secondAttribute="trailing" id="QtK-cp-KXC"/>
+                        <constraint firstAttribute="bottom" secondItem="hgW-oN-DjD" secondAttribute="bottom" id="S5Z-9p-EcB"/>
+                        <constraint firstItem="hgW-oN-DjD" firstAttribute="leading" secondItem="hMU-J7-aFU" secondAttribute="leading" id="gK9-Rf-KrE"/>
+                        <constraint firstItem="hgW-oN-DjD" firstAttribute="centerY" secondItem="hMU-J7-aFU" secondAttribute="centerY" id="j0I-dP-Eps"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hMU-J7-aFU" secondAttribute="trailing" id="CcX-Cw-CJQ"/>
+                <constraint firstItem="hMU-J7-aFU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="JDV-2c-tTJ"/>
+                <constraint firstItem="hMU-J7-aFU" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="h0D-yX-gil"/>
+                <constraint firstItem="hMU-J7-aFU" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="vOq-Vj-Acp"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="35.5" y="79.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="whiplash" width="675" height="999"/>
+    </resources>
 </document>
