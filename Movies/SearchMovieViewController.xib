@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchMovieViewController" customModule="Movies" customModuleProvider="target">
             <connections>
                 <outlet property="button_search" destination="yqV-Ja-gp9" id="8tM-Vb-y9v"/>
+                <outlet property="searchText" destination="1Pq-oC-I6J" id="vlH-J0-BwV"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

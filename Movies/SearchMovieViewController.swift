@@ -12,6 +12,9 @@ class SearchMovieViewController: UIViewController {
 
     @IBOutlet weak var button_search: UIButton!
     
+    @IBOutlet weak var searchText: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,14 +27,11 @@ class SearchMovieViewController: UIViewController {
     }
     
     @IBAction func onSearchButtonTapped(_: Any) {
-        //TODO kroz konstruktor posalji model kontroleru
-      
-        //let vc = EditViewController()
-        //self.navigationController?.pushViewController(vc, animated: true)
+        //TODO exceptions handling
         
-        
-        let REST = RestMock()
-        let model = REST.getMovie(title: "Inception")
+        let search = searchText.text
+        let REST = RestMock() as RestAPI
+        let model = REST.getMovie(title: search!)
         
     
         let vc = MovieDetailsViewController(model:model)

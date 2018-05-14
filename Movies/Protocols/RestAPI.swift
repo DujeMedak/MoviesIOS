@@ -11,6 +11,5 @@ import Foundation
 
 protocol RestAPI{
     func getMovie(title: String) -> Movie
-    func getMovieImage(title: String) -> Movie
     
 }
