@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ImageDetailViewController: UIViewController, UIScrollViewDelegate{
+class ImageDetailViewController: UIViewController{
 
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -31,15 +31,10 @@ class ImageDetailViewController: UIViewController, UIScrollViewDelegate{
         // Dispose of any resources that can be recreated.
     }
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return movieImage
-    }
-
-
 }
-/*
+
 extension ImageDetailViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return movieImage
     }
-}*/
+}

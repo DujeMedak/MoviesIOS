@@ -8,23 +8,15 @@
 
 import UIKit
 
-class MovieDetailsViewController: UIViewController {
+class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
 
     var model:Movie?
     
-    
     @IBOutlet weak var year: UILabel!
-    
     @IBOutlet weak var genre: UILabel!
-    
     @IBOutlet weak var director: UILabel!
-    
-
     @IBOutlet weak var movieTitle: UILabel!
-    
     @IBOutlet weak var movieDescription: UILabel!
-    
-    
     @IBOutlet weak var movieImage: UIImageView!
     
     
@@ -55,7 +47,7 @@ class MovieDetailsViewController: UIViewController {
          director.text = model!.director.name + " " + model!.director.surname
          movieDescription.text = model!.description
          movieTitle.text = model!.title
-         var mImage: UIImage = UIImage(named: model!.imageURI)!
+         let mImage: UIImage = UIImage(named: model!.imageURI)!
          movieImage.image = mImage
     }
     
@@ -67,9 +59,8 @@ class MovieDetailsViewController: UIViewController {
     
     @objc func onEditButtonTap(sender: AnyObject) {
         
-        let vc = EditViewController()
+        let vc = EditDescriptionViewController()
         self.navigationController?.pushViewController(vc, animated: true)
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -82,5 +73,9 @@ class MovieDetailsViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-
+    func plotEdited(withText text: String){
+        //TODO change text
+    }
+    
 }
+

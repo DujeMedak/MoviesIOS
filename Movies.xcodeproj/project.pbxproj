@@ -18,12 +18,13 @@
 		A51DB16220A8A63100230295 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB16120A8A63100230295 /* Movie.swift */; };
 		A51DB16420A8A95500230295 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB16320A8A95500230295 /* Person.swift */; };
 		A51DB16620A8AA4000230295 /* RestMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB16520A8AA4000230295 /* RestMock.swift */; };
-		A51DB16D20A8E71900230295 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB16B20A8E71900230295 /* EditViewController.swift */; };
-		A51DB16E20A8E71900230295 /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51DB16C20A8E71900230295 /* EditViewController.xib */; };
 		A51DB17120A8EB3F00230295 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB16F20A8EB3F00230295 /* MovieDetailsViewController.swift */; };
 		A51DB17220A8EB3F00230295 /* MovieDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51DB17020A8EB3F00230295 /* MovieDetailsViewController.xib */; };
 		A5EA427820A98AF30086A6E6 /* ImageDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA427620A98AF30086A6E6 /* ImageDetailViewController.swift */; };
 		A5EA427920A98AF30086A6E6 /* ImageDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5EA427720A98AF30086A6E6 /* ImageDetailViewController.xib */; };
+		A5EA427C20A9987C0086A6E6 /* EditViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA427B20A9987C0086A6E6 /* EditViewControllerDelegate.swift */; };
+		A5EA428520A9CDE30086A6E6 /* EditDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA428320A9CDE30086A6E6 /* EditDescriptionViewController.swift */; };
+		A5EA428620A9CDE30086A6E6 /* EditDescriptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5EA428420A9CDE30086A6E6 /* EditDescriptionViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +41,13 @@
 		A51DB16120A8A63100230295 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		A51DB16320A8A95500230295 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		A51DB16520A8AA4000230295 /* RestMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestMock.swift; sourceTree = "<group>"; };
-		A51DB16B20A8E71900230295 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
-		A51DB16C20A8E71900230295 /* EditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
 		A51DB16F20A8EB3F00230295 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		A51DB17020A8EB3F00230295 /* MovieDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailsViewController.xib; sourceTree = "<group>"; };
 		A5EA427620A98AF30086A6E6 /* ImageDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailViewController.swift; sourceTree = "<group>"; };
 		A5EA427720A98AF30086A6E6 /* ImageDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageDetailViewController.xib; sourceTree = "<group>"; };
+		A5EA427B20A9987C0086A6E6 /* EditViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewControllerDelegate.swift; sourceTree = "<group>"; };
+		A5EA428320A9CDE30086A6E6 /* EditDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDescriptionViewController.swift; sourceTree = "<group>"; };
+		A5EA428420A9CDE30086A6E6 /* EditDescriptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditDescriptionViewController.xib; sourceTree = "<group>"; };
 		C4D8CB3DAFBBFDE9F7C2424E /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6B17D303AC1B7E0CA8621A /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,20 +87,21 @@
 			children = (
 				A51DB16020A8A60C00230295 /* Services */,
 				A51DB15F20A8A5F800230295 /* Models */,
-				A51DB14520A8873700230295 /* AppDelegate.swift */,
-				A51DB15B20A88A2600230295 /* SearchMovieViewController.swift */,
-				A51DB15C20A88A2600230295 /* SearchMovieViewController.xib */,
-				A51DB14720A8873700230295 /* ViewController.swift */,
-				A51DB14920A8873700230295 /* Main.storyboard */,
-				A51DB16B20A8E71900230295 /* EditViewController.swift */,
-				A51DB16C20A8E71900230295 /* EditViewController.xib */,
 				A51DB16F20A8EB3F00230295 /* MovieDetailsViewController.swift */,
 				A51DB17020A8EB3F00230295 /* MovieDetailsViewController.xib */,
+				A5EA428320A9CDE30086A6E6 /* EditDescriptionViewController.swift */,
+				A5EA428420A9CDE30086A6E6 /* EditDescriptionViewController.xib */,
+				A51DB14C20A8873700230295 /* Assets.xcassets */,
+				A51DB14520A8873700230295 /* AppDelegate.swift */,
+				A51DB14720A8873700230295 /* ViewController.swift */,
+				A51DB14920A8873700230295 /* Main.storyboard */,
+				A51DB15B20A88A2600230295 /* SearchMovieViewController.swift */,
+				A51DB15C20A88A2600230295 /* SearchMovieViewController.xib */,
 				A5EA427620A98AF30086A6E6 /* ImageDetailViewController.swift */,
 				A5EA427720A98AF30086A6E6 /* ImageDetailViewController.xib */,
-				A51DB14C20A8873700230295 /* Assets.xcassets */,
 				A51DB14E20A8873700230295 /* LaunchScreen.storyboard */,
 				A51DB15120A8873700230295 /* Info.plist */,
+				A5EA427B20A9987C0086A6E6 /* EditViewControllerDelegate.swift */,
 			);
 			path = Movies;
 			sourceTree = "<group>";
@@ -198,12 +201,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A51DB16E20A8E71900230295 /* EditViewController.xib in Resources */,
 				A5EA427920A98AF30086A6E6 /* ImageDetailViewController.xib in Resources */,
 				A51DB15020A8873700230295 /* LaunchScreen.storyboard in Resources */,
 				A51DB14D20A8873700230295 /* Assets.xcassets in Resources */,
 				A51DB14B20A8873700230295 /* Main.storyboard in Resources */,
 				A51DB17220A8EB3F00230295 /* MovieDetailsViewController.xib in Resources */,
+				A5EA428620A9CDE30086A6E6 /* EditDescriptionViewController.xib in Resources */,
 				A51DB15E20A88A2600230295 /* SearchMovieViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,8 +259,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5EA427C20A9987C0086A6E6 /* EditViewControllerDelegate.swift in Sources */,
 				A51DB17120A8EB3F00230295 /* MovieDetailsViewController.swift in Sources */,
-				A51DB16D20A8E71900230295 /* EditViewController.swift in Sources */,
 				A51DB16420A8A95500230295 /* Person.swift in Sources */,
 				A51DB14820A8873700230295 /* ViewController.swift in Sources */,
 				A51DB16620A8AA4000230295 /* RestMock.swift in Sources */,
@@ -265,6 +268,7 @@
 				A51DB15D20A88A2600230295 /* SearchMovieViewController.swift in Sources */,
 				A5EA427820A98AF30086A6E6 /* ImageDetailViewController.swift in Sources */,
 				A51DB16220A8A63100230295 /* Movie.swift in Sources */,
+				A5EA428520A9CDE30086A6E6 /* EditDescriptionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
