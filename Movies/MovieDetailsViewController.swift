@@ -59,7 +59,7 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     
     @objc func onEditButtonTap(sender: AnyObject) {
         
-        let vc = EditDescriptionViewController()
+        let vc = EditDescriptionViewController(editDelegate: self as EditViewControllerDelegate)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -10,6 +10,24 @@ import UIKit
 
 class EditDescriptionViewController: UIViewController {
 
+    var editDelegate:EditViewControllerDelegate?
+    
+    
+    
+    
+    convenience init() {
+        self.init(editDelegate: nil)
+    }
+    
+    init(editDelegate: EditViewControllerDelegate?) {
+        self.editDelegate = editDelegate
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
