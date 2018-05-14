@@ -25,6 +25,7 @@
 		A5EA427C20A9987C0086A6E6 /* EditViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EA427B20A9987C0086A6E6 /* EditViewControllerDelegate.swift */; };
 		A5F0A8C120AA350D00E71100 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0A8BF20AA350D00E71100 /* EditViewController.swift */; };
 		A5F0A8C220AA350D00E71100 /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F0A8C020AA350D00E71100 /* EditViewController.xib */; };
+		A5F0A8C520AA389400E71100 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0A8C420AA389400E71100 /* RestAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		A5EA427B20A9987C0086A6E6 /* EditViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewControllerDelegate.swift; sourceTree = "<group>"; };
 		A5F0A8BF20AA350D00E71100 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		A5F0A8C020AA350D00E71100 /* EditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
+		A5F0A8C420AA389400E71100 /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
 		C4D8CB3DAFBBFDE9F7C2424E /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6B17D303AC1B7E0CA8621A /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 		A51DB14420A8873700230295 /* Movies */ = {
 			isa = PBXGroup;
 			children = (
+				A5F0A8C320AA384F00E71100 /* Protocols */,
 				A51DB16020A8A60C00230295 /* Services */,
 				A51DB15F20A8A5F800230295 /* Models */,
 				A51DB16F20A8EB3F00230295 /* MovieDetailsViewController.swift */,
@@ -99,7 +102,6 @@
 				A5EA427720A98AF30086A6E6 /* ImageDetailViewController.xib */,
 				A51DB14E20A8873700230295 /* LaunchScreen.storyboard */,
 				A51DB15120A8873700230295 /* Info.plist */,
-				A5EA427B20A9987C0086A6E6 /* EditViewControllerDelegate.swift */,
 				A5F0A8BF20AA350D00E71100 /* EditViewController.swift */,
 				A5F0A8C020AA350D00E71100 /* EditViewController.xib */,
 			);
@@ -121,6 +123,15 @@
 				A51DB16520A8AA4000230295 /* RestMock.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		A5F0A8C320AA384F00E71100 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				A5EA427B20A9987C0086A6E6 /* EditViewControllerDelegate.swift */,
+				A5F0A8C420AA389400E71100 /* RestAPI.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		B3D58DE27A022F3410C084BB /* Frameworks */ = {
@@ -222,11 +233,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Movies/Pods-Movies-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +280,7 @@
 				A51DB14620A8873700230295 /* AppDelegate.swift in Sources */,
 				A51DB15D20A88A2600230295 /* SearchMovieViewController.swift in Sources */,
 				A5EA427820A98AF30086A6E6 /* ImageDetailViewController.swift in Sources */,
+				A5F0A8C520AA389400E71100 /* RestAPI.swift in Sources */,
 				A51DB16220A8A63100230295 /* Movie.swift in Sources */,
 				A5F0A8C120AA350D00E71100 /* EditViewController.swift in Sources */,
 			);

@@ -5,5 +5,6 @@ target 'Movies' do
 
 pod 'PureLayout'
 pod 'Alamofire'
+pod 'Kingfisher'
 
 end

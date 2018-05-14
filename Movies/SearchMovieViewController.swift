@@ -31,7 +31,7 @@ class SearchMovieViewController: UIViewController {
         
         
         let REST = RestMock()
-        let model = REST.getMovie(title: "Whiplash")
+        let model = REST.getMovie(title: "Inception")
         
     
         let vc = MovieDetailsViewController(model:model)

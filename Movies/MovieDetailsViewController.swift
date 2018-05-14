@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
+
 
 class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
 
     var model:Movie?
+    var img: UIImage?
     
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var genre: UILabel!
@@ -47,8 +50,17 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
          director.text = model!.director.name + " " + model!.director.surname
          movieDescription.text = model!.description
          movieTitle.text = model!.title
-         let mImage: UIImage = UIImage(named: model!.imageURI)!
-         movieImage.image = mImage
+         //let mImage: UIImage = UIImage(named: model!.imageURI)!
+        
+         let url = URL(string: model!.imageURI)
+        
+        
+        movieImage.kf.setImage(with: url, completionHandler: {
+            (image, error, cacheType, imageUrl) in
+            self.img = image
+        })
+         //movieImage.kf.setImage(with: url)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
