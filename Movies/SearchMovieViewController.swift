@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PureLayout
 
 class SearchMovieViewController: UIViewController, UITextFieldDelegate {
 
@@ -15,6 +16,13 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchText.autoAlignAxis(toSuperviewAxis: .vertical)
+        searchText.autoSetDimensions(to: CGSize(width: 150, height: 30))
+        searchText.autoPinEdge(toSuperviewEdge: .top, withInset: 20)
+        button_search.autoAlignAxis(toSuperviewAxis: .vertical)
+        button_search.autoPinEdge(.top, to:ALEdge.bottom, of: searchText, withOffset: 20)
+        
         self.searchText.delegate = self as UITextFieldDelegate
     }
     

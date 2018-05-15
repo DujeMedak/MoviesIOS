@@ -51,6 +51,7 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         genreTxt.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         directorTxt.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         movieDescription.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
+        movieDescription.autoPinEdge(toSuperviewEdge: .right, withInset: 16)
         
         yearTxt.autoPinEdge(.top, to: ALEdge.bottom, of: movieTitle)
         genreTxt.autoPinEdge(.top, to: ALEdge.bottom, of: yearTxt)
@@ -60,7 +61,6 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         year.autoPinEdge(.top, to: ALEdge.bottom, of: movieTitle)
         genre.autoPinEdge(.top, to: ALEdge.bottom, of: year)
         director.autoPinEdge(.top, to: ALEdge.bottom, of: genre)
-        movieDescription.autoPinEdge(.top, to: ALEdge.bottom, of: director)
         
         
         year.autoAlignAxis(.baseline, toSameAxisOf: yearTxt)
@@ -97,7 +97,12 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         year.text = String(model!.year)
         genre.text = model!.genre.rawValue
         director.text = model!.director.name + " " + model!.director.surname
+        
         movieDescription.text = model!.description
+        movieDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
+        movieDescription.numberOfLines = 0
+        movieDescription.preferredMaxLayoutWidth = 500
+        
         
         
         
