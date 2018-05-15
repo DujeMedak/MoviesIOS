@@ -17,6 +17,10 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         self.searchText.delegate = self as UITextFieldDelegate
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        searchText.text = ""
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
