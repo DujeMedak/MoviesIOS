@@ -10,6 +10,6 @@ import Foundation
 
 
 protocol RestAPI{
-    func getMovie(title: String) -> Movie
+    func getMovie(title: String) -> Movie?
     
 }

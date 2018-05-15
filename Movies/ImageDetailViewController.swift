@@ -20,7 +20,14 @@ class ImageDetailViewController: UIViewController{
     }
     
     init(movieImg: UIImage?) {
-        self.movieImg = movieImg
+        
+        if let img = movieImg{
+            self.movieImg = img
+        }
+        else{
+            //TODO replace with some default image
+            self.movieImg = UIImage(named: "inception")
+        }
         super.init(nibName: nil, bundle: nil)
     }
     

@@ -8,35 +8,43 @@
 
 import UIKit
 
-class SearchMovieViewController: UIViewController {
+class SearchMovieViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var button_search: UIButton!
-    
     @IBOutlet weak var searchText: UITextField!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.searchText.delegate = self as UITextFieldDelegate
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     @IBAction func onSearchButtonTapped(_: Any) {
-        //TODO exceptions handling
-        
-        let search = searchText.text
-        let REST = RestMock() as RestAPI
-        let model = REST.getMovie(title: search!)
-        
+        searchAndLoadMovie()
+    }
     
-        let vc = MovieDetailsViewController(model:model)
-        self.navigationController?.pushViewController(vc, animated: true)
- 
- }
+    func searchAndLoadMovie(){
+        //TODO add fail message
+        let REST = RestMock() as RestAPI
+        if let search = searchText.text {
+            if let model = REST.getMovie(title: search){
+                let vc = MovieDetailsViewController(model:model)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()  //if desired
+        performAction()
+        return true
+    }
+    
+    func performAction() {
+        searchAndLoadMovie()
+    }
     
 }

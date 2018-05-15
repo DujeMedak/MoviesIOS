@@ -25,11 +25,15 @@ class RestMock:RestAPI{
         movies[movie2.title]=movie2
     }
     
-    func getMovie(title: String) -> Movie {
+    func getMovie(title: String) -> Movie? {
         //TODO handle exceptions
-        return movies[title]!
+        let mov = movies[title]
+        if  mov != nil{
+            return mov
+        }
+        return nil
     }
-    
+
     
     
 }
