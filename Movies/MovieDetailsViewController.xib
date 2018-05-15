@@ -14,12 +14,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MovieDetailsViewController" customModule="Movies" customModuleProvider="target">
             <connections>
                 <outlet property="director" destination="LX0-pv-kBD" id="JFt-8a-VOW"/>
+                <outlet property="directorTxt" destination="CCj-bH-14X" id="nfp-Sz-v9v"/>
                 <outlet property="genre" destination="Sjx-pt-9Iv" id="Zyu-Uo-nev"/>
+                <outlet property="genreTxt" destination="rCP-Ge-zMe" id="XOY-vZ-2Wc"/>
                 <outlet property="movieDescription" destination="z2E-Qo-MDJ" id="Y1Y-vC-onL"/>
                 <outlet property="movieImage" destination="0yz-zx-50e" id="TFE-K7-LAW"/>
                 <outlet property="movieTitle" destination="lce-bo-TPh" id="yD7-2G-e8E"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="year" destination="lif-5I-pZn" id="Zbw-Ot-zSh"/>
+                <outlet property="yearTxt" destination="0ab-7n-GG9" id="xQy-Sn-8fv"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -74,7 +77,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2E-Qo-MDJ">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2E-Qo-MDJ">
                     <rect key="frame" x="16" y="418" width="42" height="21"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
