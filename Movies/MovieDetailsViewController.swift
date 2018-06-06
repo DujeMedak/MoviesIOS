@@ -8,8 +8,6 @@
 
 import UIKit
 import Kingfisher
-import PureLayout
-
 
 class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
 
