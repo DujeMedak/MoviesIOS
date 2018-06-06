@@ -20,7 +20,6 @@ class ImageDetailViewController: UIViewController{
     }
     
     init(movieImg: UIImage?) {
-        
         if let img = movieImg{
             self.movieImg = img
         }
@@ -37,20 +36,11 @@ class ImageDetailViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 5.0
-        
         scrollView.delegate = self
         movieImage.image = self.movieImg
-    
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 }
 
 extension ImageDetailViewController: UIScrollViewDelegate {

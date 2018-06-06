@@ -27,6 +27,5 @@ class EditViewController: UIViewController {
         super.viewWillDisappear(animated)
         editDelegate?.plotEdited(withText: movieDescriptionView.text)
     }
-    
 }
 

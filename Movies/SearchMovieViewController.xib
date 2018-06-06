@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,17 +23,15 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Pq-oC-I6J">
-                    <rect key="frame" x="81" y="162" width="213" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <textField opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Pq-oC-I6J">
+                    <rect key="frame" x="76.5" y="105" width="222" height="30"/>
                     <color key="backgroundColor" red="0.87466084608106931" green="0.89862755487218238" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqV-Ja-gp9">
-                    <rect key="frame" x="144" y="245" width="87" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yqV-Ja-gp9">
+                    <rect key="frame" x="142" y="170" width="90" height="30"/>
                     <color key="backgroundColor" red="0.49867517266943528" green="0.75302109581616783" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <state key="normal" title="Button"/>
@@ -42,6 +41,14 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="yqV-Ja-gp9" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="8kq-ho-rGV"/>
+                <constraint firstItem="yqV-Ja-gp9" firstAttribute="width" secondItem="1Pq-oC-I6J" secondAttribute="height" multiplier="3:1" id="E2y-wl-w34"/>
+                <constraint firstItem="yqV-Ja-gp9" firstAttribute="top" secondItem="1Pq-oC-I6J" secondAttribute="bottom" constant="35" id="MJC-01-riE"/>
+                <constraint firstItem="1Pq-oC-I6J" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="1:3" id="jTE-jQ-KWo"/>
+                <constraint firstItem="1Pq-oC-I6J" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="85" id="vn4-wh-JLa"/>
+                <constraint firstItem="1Pq-oC-I6J" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="wTS-nF-4I1"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="26.5" y="51.5"/>
         </view>
