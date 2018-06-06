@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		6208CD3405F61EE035D1F2A3 /* Pods_Movies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7E32D5587BE8326E83219D /* Pods_Movies.framework */; };
 		A51DB14620A8873700230295 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB14520A8873700230295 /* AppDelegate.swift */; };
-		A51DB14820A8873700230295 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB14720A8873700230295 /* ViewController.swift */; };
-		A51DB14B20A8873700230295 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51DB14920A8873700230295 /* Main.storyboard */; };
 		A51DB14D20A8873700230295 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A51DB14C20A8873700230295 /* Assets.xcassets */; };
 		A51DB15020A8873700230295 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A51DB14E20A8873700230295 /* LaunchScreen.storyboard */; };
 		A51DB15D20A88A2600230295 /* SearchMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51DB15B20A88A2600230295 /* SearchMovieViewController.swift */; };
@@ -32,8 +30,6 @@
 		0F7E32D5587BE8326E83219D /* Pods_Movies.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Movies.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51DB14220A8873700230295 /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A51DB14520A8873700230295 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A51DB14720A8873700230295 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A51DB14A20A8873700230295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A51DB14C20A8873700230295 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A51DB14F20A8873700230295 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A51DB15120A8873700230295 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,8 +90,6 @@
 				A51DB17020A8EB3F00230295 /* MovieDetailsViewController.xib */,
 				A51DB14C20A8873700230295 /* Assets.xcassets */,
 				A51DB14520A8873700230295 /* AppDelegate.swift */,
-				A51DB14720A8873700230295 /* ViewController.swift */,
-				A51DB14920A8873700230295 /* Main.storyboard */,
 				A51DB15B20A88A2600230295 /* SearchMovieViewController.swift */,
 				A51DB15C20A88A2600230295 /* SearchMovieViewController.xib */,
 				A5EA427620A98AF30086A6E6 /* ImageDetailViewController.swift */,
@@ -215,7 +209,6 @@
 				A5EA427920A98AF30086A6E6 /* ImageDetailViewController.xib in Resources */,
 				A51DB15020A8873700230295 /* LaunchScreen.storyboard in Resources */,
 				A51DB14D20A8873700230295 /* Assets.xcassets in Resources */,
-				A51DB14B20A8873700230295 /* Main.storyboard in Resources */,
 				A5F0A8C220AA350D00E71100 /* EditViewController.xib in Resources */,
 				A51DB17220A8EB3F00230295 /* MovieDetailsViewController.xib in Resources */,
 				A51DB15E20A88A2600230295 /* SearchMovieViewController.xib in Resources */,
@@ -275,7 +268,6 @@
 				A5EA427C20A9987C0086A6E6 /* EditViewControllerDelegate.swift in Sources */,
 				A51DB17120A8EB3F00230295 /* MovieDetailsViewController.swift in Sources */,
 				A51DB16420A8A95500230295 /* Person.swift in Sources */,
-				A51DB14820A8873700230295 /* ViewController.swift in Sources */,
 				A51DB16620A8AA4000230295 /* RestMock.swift in Sources */,
 				A51DB14620A8873700230295 /* AppDelegate.swift in Sources */,
 				A51DB15D20A88A2600230295 /* SearchMovieViewController.swift in Sources */,
@@ -289,14 +281,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		A51DB14920A8873700230295 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A51DB14A20A8873700230295 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A51DB14E20A8873700230295 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
