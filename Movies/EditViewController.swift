@@ -10,26 +10,9 @@ import UIKit
 
 class EditViewController: UIViewController {
     
-    var editDelegate:EditViewControllerDelegate?
-    
+    weak var editDelegate:EditViewControllerDelegate?
     @IBOutlet weak var movieDescriptionView: UITextView!
-    
-    var movieDescription:String? = ""
-    
-    
-    convenience init() {
-        self.init(editDelegate: nil,textToEdit:nil)
-    }
-    
-    init(editDelegate: EditViewControllerDelegate?, textToEdit:String?) {
-        self.editDelegate = editDelegate
-        self.movieDescription = textToEdit
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    var movieDescription:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol EditViewControllerDelegate{
+protocol EditViewControllerDelegate:NSObjectProtocol{
     func plotEdited(withText text: String)
 
 }

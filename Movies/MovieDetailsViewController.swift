@@ -22,30 +22,14 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieDescription: UILabel!
     @IBOutlet weak var movieImage: UIImageView!
-    
-    
     @IBOutlet weak var yearTxt: UILabel!
     @IBOutlet weak var genreTxt: UILabel!
     @IBOutlet weak var directorTxt: UILabel!
-    
-    convenience init() {
-     self.init(model: nil)
-     }
-     
-     init(model: Movie?) {
-     self.model = model
-     super.init(nibName: nil, bundle: nil)
-     }
-     
-     required init?(coder aDecoder: NSCoder) {
-     super.init(coder: aDecoder)
-     }
     
     func setConstrains(){
         //imageView Constrains done in interface builder
         movieTitle.autoPinEdge(.top, to: ALEdge.bottom, of: movieImage)
         movieTitle.autoAlignAxis(toSuperviewAxis: .vertical)
-        
         
         yearTxt.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
         genreTxt.autoPinEdge(toSuperviewEdge: .left, withInset: 16)
@@ -77,50 +61,58 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "edit", style: .done, target: self, action: #selector(onEditButtonTap))
-        
          setConstrains()
-        
-        
         movieImage.isUserInteractionEnabled = true
         movieImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MovieDetailsViewController.onImageViewTap(_:))))
         
-        let url = URL(string: model!.imageURI)
+        guard let unwrappedModel = model else {
+            //TODO print some message or set some default model with placeholders
+            return
+        }
+        
+        let url = URL(string: unwrappedModel.imageURI)
         
         movieImage.kf.setImage(with: url, completionHandler: {
             (image, error, cacheType, imageUrl) in
-            //is this part executed if the image is cached??
             self.img = image
          })
         
-        movieTitle.text = model!.title
+        movieTitle.text = unwrappedModel.title
         
-        year.text = String(model!.year)
-        genre.text = model!.genre.rawValue
-        director.text = model!.director.name + " " + model!.director.surname
+        year.text = String(unwrappedModel.year)
+        genre.text = unwrappedModel.genre.rawValue
+        director.text = unwrappedModel.director.name + " " + unwrappedModel.director.surname
         
-        movieDescription.text = model!.description
+        movieDescription.text = unwrappedModel.description
         movieDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
         movieDescription.numberOfLines = 0
         movieDescription.preferredMaxLayoutWidth = 500
-        
-        
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        movieDescription.text = model!.description
+        
+        if let unwrapedModel = model{
+            movieDescription.text = unwrapedModel.description
+        }
+        else{
+            movieDescription.text = "Some default description..."
+        }
         //deselecting the edit button from the navigation bar (just color)
         self.navigationController?.navigationBar.tintAdjustmentMode = .normal
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
     }
     
     @objc func onEditButtonTap(sender: AnyObject) {
-        
-        let vc = EditViewController(editDelegate: self as EditViewControllerDelegate, textToEdit:model!.description)
+        guard let unwrappedModel = model else{
+            let vc = EditViewController()
+            vc.editDelegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+            return
+        }
+        let vc = EditViewController()
+        vc.editDelegate = self
+        vc.movieDescription = unwrappedModel.description
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -135,8 +127,9 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     }
     
     func plotEdited(withText text: String){
-        model?.description = text
-        
+        if let unwrappedModel = model{
+            unwrappedModel.description = text
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
