@@ -27,6 +27,7 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     @IBOutlet weak var directorTxt: UILabel!
     
     func setConstrains(){
+        
         //imageView Constrains done in interface builder
         movieTitle.autoPinEdge(.top, to: ALEdge.bottom, of: movieImage)
         movieTitle.autoAlignAxis(toSuperviewAxis: .vertical)
@@ -61,7 +62,7 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "edit", style: .done, target: self, action: #selector(onEditButtonTap))
-         setConstrains()
+        //setConstrains()
         movieImage.isUserInteractionEnabled = true
         movieImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MovieDetailsViewController.onImageViewTap(_:))))
         
