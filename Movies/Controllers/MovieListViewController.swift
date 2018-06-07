@@ -39,7 +39,7 @@ class MovieListViewController: UIViewController{
         tableView.backgroundColor = UIColor.lightGray
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(MovieListViewController.refresh), for: UIControlEvents.valueChanged)

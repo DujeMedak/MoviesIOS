@@ -8,6 +8,7 @@
 
 import Foundation
 
+/*
 class SingleMovieViewModel {
     
     let movie: MovieModel
@@ -30,5 +31,6 @@ class SingleMovieViewModel {
         }
         return nil
     }
-    
+ 
 }
+*/
