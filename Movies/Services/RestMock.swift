@@ -9,6 +9,13 @@
 import Foundation
 
 class RestMock:RestAPI{
+    func fetchMovieModel(title: String) -> MovieModel? {
+        return nil
+    }
+    
+    func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void)){
+        
+    }
     
     var movies = [String: Movie]()
     

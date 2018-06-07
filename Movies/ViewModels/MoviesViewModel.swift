@@ -7,22 +7,16 @@
 //
 
 import Foundation
-import Alamofire
 import CoreData
 import AERecord
 
 class MoviesViewModel {
-    
-
     //let temp = "http://www.omdbapi.com/?t=inception&y=&plot=short&r=json&apikey=bf90cf2e"
-    
-    let beggining = "http://www.omdbapi.com/?s="
     var search = "batman"
-    let ending = "&apikey=bf90cf2e"
-    var searchUrl = ""
     
     let baseUrl2 = "http://www.omdbapi.com"
     let apiKey2 = "bf90cf2e"
+    let restAPI: RestAPI
     
     var movies: [MovieModel]? {
         let request: NSFetchRequest<MovieModel> = MovieModel.fetchRequest()
@@ -33,43 +27,11 @@ class MoviesViewModel {
     }
     
     init() {
-        searchUrl = beggining + search + ending
+        restAPI = OmdbAPI()
     }
     
     func fetchMovies(completion: @escaping (([MovieModel]?) -> Void)) -> Void {
-        guard let url = URL(string: searchUrl) else {
-            completion(nil)
-            return
-        }
-        Alamofire.request(url,
-                          method: .get)
-            .validate()
-            .responseJSON { response in
-                guard response.result.isSuccess else {
-                    print("ERROR:",response)
-                    completion(nil)
-                    return
-                }
-                print("result of querry:",response)
-                
-                if
-                    let value = response.result.value as? [String: Any],
-                    let results = value["Search"] as? [[String: Any]] {
-                    let movies = results.map({ json -> MovieModel? in
-                        let movie = MovieModel.createFrom(json: json)
-                        print("movie:",movie)
-                        return movie
-                    }).filter { $0 != nil } .map { $0! }
-                    
-                    try? AERecord.Context.main.save()
-                    
-                    completion(movies)
-                    return
-                } else {
-                    completion(nil)
-                    return
-                }
-        }
+        restAPI.fetchMovieModelList(search: search, completion: completion)
     }
     
     func getMovieAtIndex(atIndex index: Int) -> MovieModel? {

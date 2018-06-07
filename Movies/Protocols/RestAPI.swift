@@ -11,5 +11,6 @@ import Foundation
 
 protocol RestAPI{
     func getMovie(title: String) -> Movie?
-    
+    func fetchMovieModel(title:String) -> MovieModel?
+    func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void))
 }

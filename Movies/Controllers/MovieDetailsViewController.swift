@@ -9,6 +9,11 @@
 import UIKit
 import Kingfisher
 
+protocol EditViewControllerDelegate:NSObjectProtocol{
+    func plotEdited(withText text: String)
+    
+}
+
 class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
 
     var model:Movie?
