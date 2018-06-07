@@ -19,9 +19,7 @@ class MovieListViewController: UIViewController{
     
     var refreshControl: UIRefreshControl!
     var tableFooterView: MoviesTableViewFooter!
-    
     var viewModel: MoviesViewModel!
-    
     let cellReuseIdentifier = "cellReuseIdentifier"
     
     convenience init(viewModel: MoviesViewModel) {
@@ -53,9 +51,10 @@ class MovieListViewController: UIViewController{
     }
     
     func setupData() {
-        viewModel.fetchMovies{ [weak self] (movies) in
+        /*viewModel.fetchMovies{ [weak self] (movies) in
             self?.refresh()
-        }
+        }*/
+        self.refresh()
     }
     
     @objc func refresh() {

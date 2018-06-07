@@ -12,21 +12,23 @@ import AERecord
 
 class MoviesViewModel {
     //let temp = "http://www.omdbapi.com/?t=inception&y=&plot=short&r=json&apikey=bf90cf2e"
-    var search = "batman"
+    let search: String
     
     let baseUrl2 = "http://www.omdbapi.com"
     let apiKey2 = "bf90cf2e"
     let restAPI: RestAPI
     
-    var movies: [MovieModel]? {
+    var movies: [MovieModel]?
+    /*{
         let request: NSFetchRequest<MovieModel> = MovieModel.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
         let context = AERecord.Context.main
         let movie = try? context.fetch(request)
         return movie
-    }
+    }*/
     
-    init() {
+    init(search:String) {
+        self.search = search
         restAPI = OmdbAPI()
     }
     

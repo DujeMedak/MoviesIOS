@@ -9,7 +9,7 @@
 import UIKit
 
 class SearchMovieViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var button_search: UIButton!
     @IBOutlet weak var searchText: UITextField!
     
@@ -21,19 +21,26 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         searchText.text = ""
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
     @IBAction func onSearchButtonTapped(_: Any) {
-        //searchAndLoadMovie()
-        
-        let vm = MoviesViewModel()
-        let vc = MovieListViewController(viewModel: vm)
-        self.navigationController?.pushViewController(vc, animated: true)
+        fetchAndLoadNewView()
     }
     
+    func fetchAndLoadNewView(){
+        if let search = searchText.text{
+            let vm = MoviesViewModel(search:search)
+            vm.fetchMovies(completion: { [weak self] (movies) in
+                vm.movies = movies
+                let vc = MovieListViewController(viewModel: vm)
+                self?.navigationController?.pushViewController(vc, animated: true)
+            })
+        }
+    }
+    /* from previous project
     func searchAndLoadMovie(){
         //TODO add fail message
         let REST:RestAPI = RestMock()
@@ -45,7 +52,7 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
         else{
             //print "no results"
         }
-    }
+    }*/
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()  //if desired
@@ -54,7 +61,7 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     }
     
     func performAction() {
-        //searchAndLoadMovie()
+        fetchAndLoadNewView()
     }
     
 }
