@@ -1,20 +1,28 @@
 PODS:
+  - AERecord (4.1.0)
   - Alamofire (4.7.2)
   - Kingfisher (4.7.0)
+  - PureLayout (3.0.2)
 
 DEPENDENCIES:
+  - AERecord
   - Alamofire
   - Kingfisher
+  - PureLayout
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - AERecord
     - Alamofire
     - Kingfisher
+    - PureLayout
 
 SPEC CHECKSUMS:
+  AERecord: 8dcaff86717951c50b463d1f130f2f57f7c8dbec
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
+  PureLayout: 4d550abe49a94f24c2808b9b95db9131685fe4cd
 
-PODFILE CHECKSUM: b0ce94c155534465cd63cd44e0677031baae48ae
+PODFILE CHECKSUM: a20ee5e9618b8bad7e42a6972336c66cceff28d3
 
 COCOAPODS: 1.5.2

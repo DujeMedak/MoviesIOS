@@ -6,23 +6,30 @@
 //  Copyright © 2018 Duje Medak. All rights reserved.
 //
 
+import Foundation
+import Alamofire
+import CoreData
+import AERecord
 
 class MoviesViewModel {
-    var movies: [Film]? {
-        let request: NSFetchRequest<Review> = Review.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        let context = AERecord.Context.main
-        let review = try? context.fetch(request)
-        return review
-    }
     
     let baseUrl = "https://api.nytimes.com/svc/movies/v2/reviews/search.json"
     let apiKey = "677da7a230e64c11bdd9c25072e1b0d1"
     
+    var movies: [MovieModel]? {
+        let request: NSFetchRequest<MovieModel> = MovieModel.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        let context = AERecord.Context.main
+        let movie = try? context.fetch(request)
+        return movie
+    }
+    
+   
+    
     init() {
     }
     
-    func fetchReviews(completion: @escaping (([Review]?) -> Void)) -> Void {
+    func fetchMovies(completion: @escaping (([MovieModel]?) -> Void)) -> Void {
         guard let url = URL(string: baseUrl) else {
             completion(nil)
             return
@@ -40,15 +47,15 @@ class MoviesViewModel {
                 if
                     let value = response.result.value as? [String: Any],
                     let results = value["results"] as? [[String: Any]] {
-                    let reviews = results.map({ json -> Review? in
-                        let review = Review.createFrom(json: json)
-                        return review
+                    let movies = results.map({ json -> MovieModel? in
+                        let movie = MovieModel.createFrom(json: json)
+                        return movie
                     }).filter { $0 != nil } .map { $0! }
                     
                     
                     try? AERecord.Context.main.save()
                     
-                    completion(reviews)
+                    completion(movies)
                     return
                 } else {
                     completion(nil)
@@ -57,26 +64,23 @@ class MoviesViewModel {
         }
     }
     
-    func review(atIndex index: Int) -> Review? {
-        guard let reviews = reviews else {
+    func getMovieAtIndex(atIndex index: Int) -> MovieModel? {
+        guard let movies = movies else {
             return nil
         }
-        
-        return reviews[index]
+        return movies[index]
     }
     
-    func numberOfReviews() -> Int {
-        return reviews?.count ?? 0
+    func numberOfMovies() -> Int {
+        return movies?.count ?? 0
     }
     
-    func createReview(withText title: String, date: String, summary: String) -> Void {
+    func createMovie(withText title: String) -> Void {
         let json: [String: Any] = [
-            "display_title": title,
-            "summary_short": summary,
-            "publication_date": date
+            "display_title": title
         ]
         
-        if let _ = Review.createFrom(json: json) {
+        if let _ = MovieModel.createFrom(json: json) {
             try? AERecord.Context.main.save()
         }
     }

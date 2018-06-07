@@ -11,19 +11,20 @@ import UIKit
 class MovieListViewController: UIViewController{
 
     @IBOutlet weak var tableView: UITableView!
-    let apiKey = bf90cf2e
+    
+    //let apiKey = "bf90cf2e"
     let requestTemplate = "http://www.omdbapi.com/?apikey=[yourkey]&"
     let temp = "http://www.omdbapi.com/?t=inception&y=&plot=short&r=json&apikey=bf90cf2e"
-    let temp = "http://www.omdbapi.com/?s=batman&apikey=bf90cf2e"
+    let temp2 = "http://www.omdbapi.com/?s=batman&apikey=bf90cf2e"
     
     var refreshControl: UIRefreshControl!
-    //var tableFooterView: ReviewsTableViewFooterView!
+    var tableFooterView: MoviesTableViewFooter!
     
-    //var viewModel: ReviewsViewModel!
+    var viewModel: MoviesViewModel!
     
     let cellReuseIdentifier = "cellReuseIdentifier"
     
-    convenience init(viewModel: ReviewsViewModel) {
+    convenience init(viewModel: MoviesViewModel) {
         self.init()
         self.viewModel = viewModel
     }
@@ -41,23 +42,23 @@ class MovieListViewController: UIViewController{
         tableView.separatorStyle = .none
         
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(ReviewsListViewController.refresh), for: UIControlEvents.valueChanged)
+        refreshControl.addTarget(self, action: #selector(MovieListViewController.refresh), for: UIControlEvents.valueChanged)
         tableView.refreshControl = refreshControl
         
-        tableView.register(UINib(nibName: "ReviewTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
         
-        tableFooterView = ReviewsTableViewFooterView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 200))
+        tableFooterView = MoviesTableViewFooter(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 200))
         tableFooterView.delegate = self
         tableView.tableFooterView = tableFooterView
     }
     
     func setupData() {
-        viewModel.fetchReviews { [weak self] (reviews) in
+        viewModel.fetchMovies{ [weak self] (movies) in
             self?.refresh()
         }
     }
     
-    func refresh() {
+    @objc func refresh() {
         tableView.reloadData()
         refreshControl.endRefreshing()
     }
@@ -65,11 +66,11 @@ class MovieListViewController: UIViewController{
 
 extension MovieListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
+        return 100.0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = ReviewsTableSectionHeader()
+        let view = MoviesTableSectionHeader()
         return view
     }
     
@@ -79,21 +80,23 @@ extension MovieListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        /*//TODO change this part later
         if let review = viewModel.review(atIndex: indexPath.row) {
-            let singleReviewViewModel = SingleReviewViewModel(review: review)
-            let singleReviewViewController = SingleReviewViewController(viewModel: singleReviewViewModel)
-            navigationController?.pushViewController(singleReviewViewController, animated: true)
+            let singleReviewViewModel = SingleMovieViewModel(movie: review)
+         
+            //let singleReviewViewController = MovieDetailsViewController(viewModel: singleReviewViewModel)
+            //navigationController?.pushViewController(singleReviewViewController, animated: true)
         }
+        */
     }
 }
 
 extension MovieListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! ReviewsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! MovieTableViewCell
         
-        if let review = viewModel.review(atIndex: indexPath.row) {
-            cell.setup(withReview: review)
+        if let movie = viewModel.getMovieAtIndex(atIndex: indexPath.row) {
+            cell.setup(withMovie: movie)
         }
         return cell
     }
@@ -103,13 +106,14 @@ extension MovieListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfReviews()
+        return viewModel.numberOfMovies()
     }
 }
 
 extension MovieListViewController: TableViewFooterViewDelegate {
-    func reviewCreated(withText title: String, date: String, summary: String) {
-        viewModel.createReview(withText: title, date: date, summary: summary)
+
+    func movieCreated(withText title: String) {
+        viewModel.createMovie(withText: title)
         refresh()
     }
 }

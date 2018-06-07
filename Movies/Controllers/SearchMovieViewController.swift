@@ -27,7 +27,11 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onSearchButtonTapped(_: Any) {
-        searchAndLoadMovie()
+        //searchAndLoadMovie()
+        
+        let vm = MoviesViewModel()
+        let vc = MovieListViewController(viewModel: vm)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func searchAndLoadMovie(){
@@ -50,7 +54,7 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     }
     
     func performAction() {
-        searchAndLoadMovie()
+        //searchAndLoadMovie()
     }
     
 }

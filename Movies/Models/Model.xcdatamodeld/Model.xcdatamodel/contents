@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="16G1314" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Film" representedClassName="Film" syncable="YES" codeGenerationType="class">
-        <attribute name="imdbID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="posterUrl" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="MovieModel" representedClassName="MovieModel" syncable="YES">
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Film" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="MovieModel" positionX="-63" positionY="-18" width="128" height="60"/>
     </elements>
 </model>

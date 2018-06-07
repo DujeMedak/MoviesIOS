@@ -1,0 +1,21 @@
+//
+//  MovieModel+CoreDataProperties.swift
+//  
+//
+//  Created by Duje Medak on 07/06/2018.
+//
+//
+
+import Foundation
+import CoreData
+
+
+extension MovieModel {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<MovieModel> {
+        return NSFetchRequest<MovieModel>(entityName: "MovieModel")
+    }
+
+    @NSManaged public var title: String
+
+}

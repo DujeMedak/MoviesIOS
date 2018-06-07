@@ -5,5 +5,7 @@ target 'Movies' do
 
 pod 'Alamofire'
 pod 'Kingfisher'
+pod 'PureLayout'
+pod 'AERecord'
 
 end
