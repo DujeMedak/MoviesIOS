@@ -111,9 +111,10 @@ extension MovieListViewController: UITableViewDataSource {
 }
 
 extension MovieListViewController: TableViewFooterViewDelegate {
-
-    func movieCreated(withText title: String) {
-        viewModel.createMovie(withText: title)
+    
+    //TODO change constructor
+    func movieCreated(withText title: String, year: String, poster: String) {
+        viewModel.createMovie(withText: title, year: year, poster: poster )
         refresh()
     }
 }

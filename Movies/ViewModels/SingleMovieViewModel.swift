@@ -19,16 +19,16 @@ class SingleMovieViewModel {
     var title: String {
         return movie.title.uppercased()
     }
-    /*
-    var summary: String {
-        return movie.summary
+    
+    var year: String {
+        return movie.year
     }
     
     var imageUrl: URL? {
-        if let urlString = movie.imageUrl {
+        if let urlString = movie.poster {
             return URL(string: urlString)
         }
         return nil
     }
-    */
+    
 }

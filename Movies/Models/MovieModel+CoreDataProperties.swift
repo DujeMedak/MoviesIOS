@@ -17,5 +17,7 @@ extension MovieModel {
     }
 
     @NSManaged public var title: String
+    @NSManaged public var year: String
+    @NSManaged public var poster: String?
 
 }

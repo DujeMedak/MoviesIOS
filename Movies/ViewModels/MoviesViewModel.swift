@@ -13,10 +13,8 @@ import AERecord
 
 class MoviesViewModel {
     
-    let baseUrl = "https://api.nytimes.com/svc/movies/v2/reviews/search.json"
-    let apiKey = "677da7a230e64c11bdd9c25072e1b0d1"
-    
-    let temp = "http://www.omdbapi.com/?t=inception&y=&plot=short&r=json&apikey=bf90cf2e"
+
+    //let temp = "http://www.omdbapi.com/?t=inception&y=&plot=short&r=json&apikey=bf90cf2e"
     
     let beggining = "http://www.omdbapi.com/?s="
     var search = "batman"
@@ -59,6 +57,7 @@ class MoviesViewModel {
                     let results = value["Search"] as? [[String: Any]] {
                     let movies = results.map({ json -> MovieModel? in
                         let movie = MovieModel.createFrom(json: json)
+                        print("movie:",movie)
                         return movie
                     }).filter { $0 != nil } .map { $0! }
                     
@@ -84,9 +83,11 @@ class MoviesViewModel {
         return movies?.count ?? 0
     }
     
-    func createMovie(withText title: String) -> Void {
+    func createMovie(withText title: String, year: String, poster: String) -> Void {
         let json: [String: Any] = [
-            "display_title": title
+            "Title": title,
+            "Year": year,
+            "Poster": poster
         ]
         
         if let _ = MovieModel.createFrom(json: json) {

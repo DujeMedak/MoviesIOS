@@ -10,7 +10,7 @@ import UIKit
 import PureLayout
 
 protocol TableViewFooterViewDelegate: class {
-    func movieCreated(withText title: String)
+    func movieCreated(withText title: String, year: String, poster: String)
 }
 
 class MoviesTableViewFooter: UIView {
@@ -23,7 +23,7 @@ class MoviesTableViewFooter: UIView {
     weak var delegate: TableViewFooterViewDelegate?
     
     @objc func createButtonTapped(_ sender: UIButton) {
-        delegate?.movieCreated(withText: titleTextField.text ?? "")
+        delegate?.movieCreated(withText: titleTextField.text ?? "" ,year: "2012", poster : summaryTextField.text ?? "")
     }
     
     override init(frame: CGRect) {
