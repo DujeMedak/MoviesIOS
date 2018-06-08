@@ -54,8 +54,11 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         
         movieTitle.text = unwrappedModel.title
         year.text = String(unwrappedModel.year)
-        //genre.text = unwrappedModel.genre.rawValue
-        //director.text = unwrappedModel.director.name + " " + unwrappedModel.director.surname
+        if let gen = unwrappedModel.genre,
+            let dir = unwrappedModel.director{
+            genre.text = gen
+            director.text = dir
+        }
         movieDescription.text = unwrappedModel.plot
         movieDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
         movieDescription.numberOfLines = 0

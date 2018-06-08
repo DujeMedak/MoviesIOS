@@ -20,10 +20,16 @@ public class MovieModel: NSManagedObject {
             let id = json["imdbID"] as? String{
             
             // TODO this part needs to be changed if the attributes in the class movie are changing through time
-            if let movie = movieExists(movieID: id){
-                if let plot = json["Plot"] as? String,
-                    movie.plot == nil{
+            if let movie = movieExists(movieID: id),
+                movie.plot == nil{
+                if let plot = json["Plot"] as? String{
                     movie.plot = plot
+                }
+                
+                if let genre = json["Genre"] as? String,
+                    let director = json["Director"] as? String{
+                    movie.genre = genre
+                    movie.director = director
                 }
                 return movie
             }
@@ -33,9 +39,6 @@ public class MovieModel: NSManagedObject {
                 movie.id = id
                 movie.year = year
                 movie.poster = poster
-                if let plot = json["Plot"] as? String{
-                    movie.plot = plot
-                }
                 return movie
             }
             
@@ -51,16 +54,16 @@ public class MovieModel: NSManagedObject {
         }
         return nil
     }
-
-private class func movieExists(movieID: String) -> MovieModel? {
-    let request: NSFetchRequest<MovieModel> = MovieModel.fetchRequest()
-    let context = AERecord.Context.main
-    request.predicate = NSPredicate(format: "id == %@", movieID)
-    request.fetchLimit = 1
-    if let movie = try? context.fetch(request).first{
-        return movie
+    
+    class func movieExists(movieID: String) -> MovieModel? {
+        let request: NSFetchRequest<MovieModel> = MovieModel.fetchRequest()
+        let context = AERecord.Context.main
+        request.predicate = NSPredicate(format: "id == %@", movieID)
+        request.fetchLimit = 1
+        if let movie = try? context.fetch(request).first{
+            return movie
+        }
+        return nil
     }
-    return nil
-}
 }
 

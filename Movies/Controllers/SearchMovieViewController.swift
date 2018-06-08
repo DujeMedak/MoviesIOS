@@ -22,10 +22,6 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
         searchText.text = ""
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     @IBAction func onSearchButtonTapped(_: Any) {
         fetchAndLoadNewView()
     }
@@ -52,7 +48,6 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     func performAction() {
         fetchAndLoadNewView()
     }
-    
 }
 
 extension SearchMovieViewController {
@@ -67,7 +62,6 @@ extension SearchMovieViewController {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }
-        
         return spinnerView
     }
     

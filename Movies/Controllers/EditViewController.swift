@@ -19,10 +19,6 @@ class EditViewController: UIViewController {
         movieDescriptionView.text = movieDescription
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         editDelegate?.plotAndSaveEdited(withText: movieDescriptionView.text)

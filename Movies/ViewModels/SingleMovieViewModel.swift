@@ -32,6 +32,14 @@ class SingleMovieViewModel {
         return "Plot is not available for this movie...\n"
     }
     
+    var genre: String? {
+        return movie.genre?.uppercased()
+    }
+    
+    var director: String? {
+        return movie.director?.uppercased()
+    }
+    
     var imageUrl: URL? {
         return URL(string: movie.poster)
     }
