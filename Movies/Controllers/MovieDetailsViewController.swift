@@ -15,8 +15,8 @@ protocol EditViewControllerDelegate:NSObjectProtocol{
 }
 
 class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
-
-    var model:Movie?
+    
+    var viewModel: SingleMovieViewModel!
     var img: UIImage?
     
     @IBOutlet weak var year: UILabel!
@@ -29,6 +29,11 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     @IBOutlet weak var genreTxt: UILabel!
     @IBOutlet weak var directorTxt: UILabel!
     
+    convenience init(viewModel: SingleMovieViewModel) {
+        self.init()
+        self.viewModel = viewModel
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,23 +41,23 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         movieImage.isUserInteractionEnabled = true
         movieImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MovieDetailsViewController.onImageViewTap(_:))))
         
-        guard let unwrappedModel = model else {
+        guard let unwrappedModel = viewModel else {
             //TODO print some message or set some default model with placeholders
             return
         }
         
-        let url = URL(string: unwrappedModel.imageURI)
+        let url = unwrappedModel.imageUrl
         
         movieImage.kf.setImage(with: url, completionHandler: {
             (image, error, cacheType, imageUrl) in
             self.img = image
-         })
+        })
         
         movieTitle.text = unwrappedModel.title
         year.text = String(unwrappedModel.year)
-        genre.text = unwrappedModel.genre.rawValue
-        director.text = unwrappedModel.director.name + " " + unwrappedModel.director.surname
-        movieDescription.text = unwrappedModel.description
+        //genre.text = unwrappedModel.genre.rawValue
+        //director.text = unwrappedModel.director.name + " " + unwrappedModel.director.surname
+        movieDescription.text = unwrappedModel.plot
         movieDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
         movieDescription.numberOfLines = 0
         movieDescription.preferredMaxLayoutWidth = 500
@@ -61,11 +66,8 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let unwrapedModel = model{
-            movieDescription.text = unwrapedModel.description
-        }
-        else{
-            movieDescription.text = "Some default description..."
+        if let unwrapedModel = viewModel{
+            movieDescription.text = unwrapedModel.plot
         }
         //deselecting the edit button from the navigation bar (just color)
         self.navigationController?.navigationBar.tintAdjustmentMode = .normal
@@ -73,16 +75,13 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     }
     
     @objc func onEditButtonTap(sender: AnyObject) {
-        guard let unwrappedModel = model else{
+        if  let unwrappedModel = viewModel{
             let vc = EditViewController()
             vc.editDelegate = self
+            vc.movieDescription = unwrappedModel.plot
             self.navigationController?.pushViewController(vc, animated: true)
-            return
+            
         }
-        let vc = EditViewController()
-        vc.editDelegate = self
-        vc.movieDescription = unwrappedModel.description
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func onImageViewTap(_ sender:AnyObject){
@@ -91,11 +90,11 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     }
     
     func plotEdited(withText text: String){
-        if let unwrappedModel = model{
-            unwrappedModel.description = text
+        if let unwrappedModel = viewModel{
+            unwrappedModel.movie.plot = text
         }
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }

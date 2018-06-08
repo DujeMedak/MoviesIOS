@@ -36,6 +36,10 @@ class MoviesViewModel {
         restAPI.fetchMovieModelList(search: search, completion: completion)
     }
     
+    func fetchMovieDetails(movieID: String, completion: @escaping ((MovieModel?) -> Void)) -> Void {
+        restAPI.fetchMovieModel(movieID: movieID, completion: completion)
+    }
+    
     func getMovieAtIndex(atIndex index: Int) -> MovieModel? {
         guard let movies = movies else {
             return nil

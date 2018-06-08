@@ -9,13 +9,6 @@
 import Foundation
 
 class RestMock:RestAPI{
-    func fetchMovieModel(title: String) -> MovieModel? {
-        return nil
-    }
-    
-    func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void)){
-        
-    }
     
     var movies = [String: Movie]()
     
@@ -42,6 +35,14 @@ class RestMock:RestAPI{
     
     func getMovie(title: String) -> Movie? {
         return movies[title]
+    }
+    
+    func fetchMovieModel(movieID: String, completion: @escaping ((MovieModel?) -> Void)) -> Void {
+        
+    }
+    
+    func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void)){
+        
     }
     
 }

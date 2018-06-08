@@ -9,13 +9,8 @@
 import UIKit
 
 class MovieListViewController: UIViewController{
-
-    @IBOutlet weak var tableView: UITableView!
     
-    //let apiKey = "bf90cf2e"
-    let requestTemplate = "http://www.omdbapi.com/?apikey=[yourkey]&"
-    let temp = "http://www.omdbapi.com/?t=inception&y=&plot=short&r=json&apikey=bf90cf2e"
-    let temp2 = "http://www.omdbapi.com/?s=batman&apikey=bf90cf2e"
+    @IBOutlet weak var tableView: UITableView!
     
     var refreshControl: UIRefreshControl!
     var tableFooterView: MoviesTableViewFooter!
@@ -44,16 +39,12 @@ class MovieListViewController: UIViewController{
         tableView.refreshControl = refreshControl
         
         tableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
-        
-        tableFooterView = MoviesTableViewFooter(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 200))
-        tableFooterView.delegate = self
-        tableView.tableFooterView = tableFooterView
     }
     
     func setupData() {
         /*viewModel.fetchMovies{ [weak self] (movies) in
-            self?.refresh()
-        }*/
+         self?.refresh()
+         }*/
         self.refresh()
     }
     
@@ -77,16 +68,23 @@ extension MovieListViewController: UITableViewDelegate {
         return 50.0
     }
     
+    func fetchAndLoadNewView(movieID: String) {
+        let sv = MovieDetailsViewController.displaySpinner(onView: self.view)
+        self.viewModel.fetchMovieDetails(movieID: movieID, completion: { [weak self] (movie) in
+            if let fetchedMovie = movie{
+                let smvm = SingleMovieViewModel(movie:fetchedMovie)
+                let vc = MovieDetailsViewController(viewModel: smvm)
+                MovieDetailsViewController.removeSpinner(spinner: sv)
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        })
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        /*//TODO change this part later
-        if let review = viewModel.review(atIndex: indexPath.row) {
-            let singleReviewViewModel = SingleMovieViewModel(movie: review)
-         
-            //let singleReviewViewController = MovieDetailsViewController(viewModel: singleReviewViewModel)
-            //navigationController?.pushViewController(singleReviewViewController, animated: true)
+        if let movie = viewModel.getMovieAtIndex(atIndex: indexPath.row){
+            fetchAndLoadNewView(movieID: movie.id)
         }
-        */
     }
 }
 
@@ -109,12 +107,26 @@ extension MovieListViewController: UITableViewDataSource {
     }
 }
 
-extension MovieListViewController: TableViewFooterViewDelegate {
+extension MovieDetailsViewController {
+    class func displaySpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
     
-    //TODO change constructor
-    func movieCreated(withText title: String, year: String, poster: String) {
-        viewModel.createMovie(withText: title, year: year, poster: poster )
-        refresh()
+    class func removeSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
     }
 }
 

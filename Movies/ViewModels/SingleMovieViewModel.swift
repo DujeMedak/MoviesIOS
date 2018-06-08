@@ -8,7 +8,7 @@
 
 import Foundation
 
-/*
+
 class SingleMovieViewModel {
     
     let movie: MovieModel
@@ -25,6 +25,13 @@ class SingleMovieViewModel {
         return movie.year
     }
     
+    var plot: String {
+        if let plot = movie.plot{
+            return plot + "\n"
+        }
+        return "Plot is not available for this movie...\n"
+    }
+    
     var imageUrl: URL? {
         if let urlString = movie.poster {
             return URL(string: urlString)
@@ -33,4 +40,4 @@ class SingleMovieViewModel {
     }
  
 }
-*/
+
