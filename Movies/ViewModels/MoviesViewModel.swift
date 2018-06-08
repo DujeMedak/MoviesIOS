@@ -12,7 +12,6 @@ import AERecord
 
 class MoviesViewModel {
     //let temp = "http://www.omdbapi.com/?t=inception&y=&plot=short&r=json&apikey=bf90cf2e"
-    let search: String
     
     let baseUrl2 = "http://www.omdbapi.com"
     let apiKey2 = "bf90cf2e"
@@ -27,12 +26,12 @@ class MoviesViewModel {
         return movie
     }*/
     
-    init(search:String) {
-        self.search = search
-        restAPI = OmdbAPI()
+    init() {
+        restAPI = CombinedMovieAPI()
     }
     
-    func fetchMovies(completion: @escaping (([MovieModel]?) -> Void)) -> Void {
+    func fetchMovies(search:String, completion: @escaping (([MovieModel]?) -> Void)) -> Void {
+        movies?.removeAll(keepingCapacity: false)
         restAPI.fetchMovieModelList(search: search, completion: completion)
     }
     

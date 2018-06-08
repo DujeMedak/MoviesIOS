@@ -35,6 +35,8 @@
 		A5F0A8C120AA350D00E71100 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0A8BF20AA350D00E71100 /* EditViewController.swift */; };
 		A5F0A8C220AA350D00E71100 /* EditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5F0A8C020AA350D00E71100 /* EditViewController.xib */; };
 		A5F0A8C520AA389400E71100 /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F0A8C420AA389400E71100 /* RestAPI.swift */; };
+		A5F8EC2920CAC4F7007D6D5D /* DataCoreAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8EC2820CAC4F7007D6D5D /* DataCoreAPI.swift */; };
+		A5F8EC2B20CAC984007D6D5D /* CombinedMovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F8EC2A20CAC984007D6D5D /* CombinedMovieAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		A5F0A8BF20AA350D00E71100 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		A5F0A8C020AA350D00E71100 /* EditViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditViewController.xib; sourceTree = "<group>"; };
 		A5F0A8C420AA389400E71100 /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
+		A5F8EC2820CAC4F7007D6D5D /* DataCoreAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCoreAPI.swift; sourceTree = "<group>"; };
+		A5F8EC2A20CAC984007D6D5D /* CombinedMovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedMovieAPI.swift; sourceTree = "<group>"; };
 		C4D8CB3DAFBBFDE9F7C2424E /* Pods-Movies.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.debug.xcconfig"; sourceTree = "<group>"; };
 		CB6B17D303AC1B7E0CA8621A /* Pods-Movies.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Movies.release.xcconfig"; path = "Pods/Target Support Files/Pods-Movies/Pods-Movies.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,6 +140,8 @@
 			children = (
 				A51DB16520A8AA4000230295 /* RestMock.swift */,
 				A538C32320C9BF950055E366 /* OmdbAPI.swift */,
+				A5F8EC2820CAC4F7007D6D5D /* DataCoreAPI.swift */,
+				A5F8EC2A20CAC984007D6D5D /* CombinedMovieAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -296,6 +303,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PureLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -332,6 +340,7 @@
 				A538C32120C9B9EA0055E366 /* MovieModel+CoreDataProperties.swift in Sources */,
 				A5EADB7C20C9183000CB90E1 /* MoviesTableSectionHeader.swift in Sources */,
 				A5EADB7E20C9191500CB90E1 /* MoviesTableViewFooter.swift in Sources */,
+				A5F8EC2920CAC4F7007D6D5D /* DataCoreAPI.swift in Sources */,
 				A51DB17120A8EB3F00230295 /* MovieDetailsViewController.swift in Sources */,
 				A51DB16420A8A95500230295 /* Person.swift in Sources */,
 				A51DB16620A8AA4000230295 /* RestMock.swift in Sources */,
@@ -343,6 +352,7 @@
 				A5F0A8C520AA389400E71100 /* RestAPI.swift in Sources */,
 				A538C32220C9B9EA0055E366 /* MovieModel+CoreDataClass.swift in Sources */,
 				A538C31D20C99F400055E366 /* MovieTableViewCell.swift in Sources */,
+				A5F8EC2B20CAC984007D6D5D /* CombinedMovieAPI.swift in Sources */,
 				A51DB16220A8A63100230295 /* Movie.swift in Sources */,
 				A5ADC5E720C8817F0088B6EB /* MoviesViewModel.swift in Sources */,
 				A5F0A8C120AA350D00E71100 /* EditViewController.swift in Sources */,

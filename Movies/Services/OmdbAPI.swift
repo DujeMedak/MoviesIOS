@@ -42,7 +42,7 @@ class OmdbAPI:RestAPI{
                 if  let value = response.result.value as? [String: Any],
                     let movie = MovieModel.createFrom(json: value){
                     print("Created movie:", movie)
-                    //try? AERecord.Context.main.save()
+                    try? AERecord.Context.main.save()
                     completion(movie)
                     return
                 }

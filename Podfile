@@ -7,5 +7,6 @@ pod 'Alamofire'
 pod 'Kingfisher'
 pod 'PureLayout'
 pod 'AERecord'
+pod 'ReachabilitySwift'
 
 end

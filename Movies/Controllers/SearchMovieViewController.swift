@@ -32,9 +32,9 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     
     func fetchAndLoadNewView(){
         if let search = searchText.text{
-            let vm = MoviesViewModel(search:search)
+            let vm = MoviesViewModel()
             let sv = SearchMovieViewController.displaySpinner(onView: self.view)
-            vm.fetchMovies(completion: { [weak self] (movies) in
+            vm.fetchMovies(search:search, completion: { [weak self] (movies) in
                 vm.movies = movies
                 let vc = MovieListViewController(viewModel: vm)
                 SearchMovieViewController.removeSpinner(spinner: sv)
