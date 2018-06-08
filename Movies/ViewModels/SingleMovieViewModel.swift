@@ -33,10 +33,11 @@ class SingleMovieViewModel {
     }
     
     var imageUrl: URL? {
-        if let urlString = movie.poster {
-            return URL(string: urlString)
-        }
-        return nil
+        return URL(string: movie.poster)
+    }
+    
+    public func saveNewPlot(newPlot:String) -> MovieModel?{
+        return MovieModel.updatePlot(movieID: movie.id, newPlot: newPlot)
     }
  
 }

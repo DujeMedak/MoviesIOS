@@ -74,14 +74,8 @@ class OmdbAPI:RestAPI{
                     let value = response.result.value as? [String: Any],
                     let results = value["Search"] as? [[String: Any]] {
                     let movies = results.map({ json -> MovieModel? in
-                        // create new one
                         let movie = MovieModel.createFrom(json: json)
-                        // TODO check if it already exist and fetch it from database
-                        // if db.contains(movie.title) {
-                        // return db.get(key=title)
-                        //
                         return movie
-                        
                     }).filter { $0 != nil } .map { $0! }
                     
                     try? AERecord.Context.main.save()

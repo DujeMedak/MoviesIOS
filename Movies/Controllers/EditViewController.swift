@@ -25,7 +25,7 @@ class EditViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        editDelegate?.plotEdited(withText: movieDescriptionView.text)
+        editDelegate?.plotAndSaveEdited(withText: movieDescriptionView.text)
     }
 }
 

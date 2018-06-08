@@ -10,8 +10,7 @@ import UIKit
 import Kingfisher
 
 protocol EditViewControllerDelegate:NSObjectProtocol{
-    func plotEdited(withText text: String)
-    
+    func plotAndSaveEdited(withText text: String)
 }
 
 class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
@@ -89,9 +88,11 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func plotEdited(withText text: String){
+    func plotAndSaveEdited(withText text: String){
         if let unwrappedModel = viewModel{
-            unwrappedModel.movie.plot = text
+            if let updatedMovie = unwrappedModel.saveNewPlot(newPlot: text){
+                    unwrappedModel.movie.plot = updatedMovie.plot
+            }
         }
     }
     

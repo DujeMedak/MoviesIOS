@@ -18,13 +18,6 @@ class MoviesViewModel {
     let restAPI: RestAPI
     
     var movies: [MovieModel]?
-    /*{
-        let request: NSFetchRequest<MovieModel> = MovieModel.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        let context = AERecord.Context.main
-        let movie = try? context.fetch(request)
-        return movie
-    }*/
     
     init() {
         restAPI = CombinedMovieAPI()

@@ -47,9 +47,8 @@ class MovieTableViewCell: UITableViewCell {
     
     func setup(withMovie movie: MovieModel) {
         title.text = movie.title
-        year.text = String(movie.year)
-        if  let urlString = movie.poster,
-            let url = URL(string: urlString) {
+        year.text = movie.year
+        if  let url = URL(string: movie.poster) {
             movieImage.kf.setImage(with: url)
         }
     }
