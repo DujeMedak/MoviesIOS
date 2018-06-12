@@ -13,10 +13,15 @@ protocol EditViewControllerDelegate:NSObjectProtocol{
     func plotAndSaveEdited(withText text: String)
 }
 
+protocol MovieDetailsDelegate:NSObjectProtocol {
+    func searchResultsDidChanged()
+}
+
 class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     
     var viewModel: SingleMovieViewModel!
     var img: UIImage?
+    var spinnerView: UIView?
     
     @IBOutlet weak var year: UILabel!
     @IBOutlet weak var genre: UILabel!
@@ -31,6 +36,7 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     convenience init(viewModel: SingleMovieViewModel) {
         self.init()
         self.viewModel = viewModel
+        self.viewModel.viewDelegate = self
     }
     
     override func viewDidLoad() {
@@ -40,29 +46,14 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         movieImage.isUserInteractionEnabled = true
         movieImage.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(MovieDetailsViewController.onImageViewTap(_:))))
         
-        guard let unwrappedModel = viewModel else {
-            //TODO print some message or set some default model with placeholders
-            return
-        }
-        
-        let url = unwrappedModel.imageUrl
-        
-        movieImage.kf.setImage(with: url, completionHandler: {
-            (image, error, cacheType, imageUrl) in
-            self.img = image
-        })
-        
-        movieTitle.text = unwrappedModel.title
-        year.text = String(unwrappedModel.year)
-        if let gen = unwrappedModel.genre,
-            let dir = unwrappedModel.director{
-            genre.text = gen
-            director.text = dir
-        }
-        movieDescription.text = unwrappedModel.plot
         movieDescription.lineBreakMode = NSLineBreakMode.byWordWrapping
         movieDescription.numberOfLines = 0
-        movieDescription.preferredMaxLayoutWidth = 500
+        setupData()
+    }
+    
+    func setupData(){
+        spinnerView = MovieDetailsViewController.displaySpinner(onView: self.view)
+        viewModel.fetchMovieDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +73,6 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
             vc.editDelegate = self
             vc.movieDescription = unwrappedModel.plot
             self.navigationController?.pushViewController(vc, animated: true)
-            
         }
     }
     
@@ -105,3 +95,51 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     
 }
 
+extension MovieDetailsViewController {
+    class func displaySpinner(onView : UIView) -> UIView {
+        let spinnerView = UIView.init(frame: onView.bounds)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
+        let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
+        ai.startAnimating()
+        ai.center = spinnerView.center
+        
+        DispatchQueue.main.async {
+            spinnerView.addSubview(ai)
+            onView.addSubview(spinnerView)
+        }
+        
+        return spinnerView
+    }
+    
+    class func removeSpinner(spinner :UIView) {
+        DispatchQueue.main.async {
+            spinner.removeFromSuperview()
+        }
+    }
+}
+
+
+extension MovieDetailsViewController: MovieDetailsDelegate{
+    func searchResultsDidChanged() {
+        movieTitle.text = viewModel.title
+        year.text = String(viewModel.year)
+        if let gen = viewModel.genre,
+            let dir = viewModel.director{
+            genre.text = gen
+            director.text = dir
+        }
+        movieDescription.text = viewModel.plot
+        if let sv = spinnerView {
+            MovieListViewController.removeSpinner(spinner: sv)
+        }
+        spinnerView = MovieDetailsViewController.displaySpinner(onView: movieImage)
+        let url = viewModel.imageUrl
+        movieImage.kf.setImage(with: url, completionHandler: {
+            (image, error, cacheType, imageUrl) in
+            self.img = image
+            if let sv = self.spinnerView {
+                MovieListViewController.removeSpinner(spinner: sv)
+            }
+        })
+    }
+}

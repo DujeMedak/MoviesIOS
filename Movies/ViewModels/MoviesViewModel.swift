@@ -10,37 +10,54 @@ import Foundation
 import CoreData
 import AERecord
 
-class MoviesViewModel {
-    //let temp = "http://www.omdbapi.com/?t=inception&y=&plot=short&r=json&apikey=bf90cf2e"
-    
+
+protocol MoviesViewModelType {
+    var movies: [MovieModel]? {get}
+    weak var viewDelegate: MovieListDelegate? {get set }
+}
+
+class MoviesViewModel: MoviesViewModelType {
     let baseUrl2 = "http://www.omdbapi.com"
     let apiKey2 = "bf90cf2e"
     let restAPI: RestAPI
+    let search: String
     
-    var movies: [MovieModel]?
+    weak var viewDelegate: MovieListDelegate?
     
-    init() {
-        restAPI = CombinedMovieAPI()
-    }
-    
-    func fetchMovies(search:String, completion: @escaping (([MovieModel]?) -> Void)) -> Void {
-        movies?.removeAll(keepingCapacity: false)
-        restAPI.fetchMovieModelList(search: search, completion: completion)
-    }
-    
-    func fetchMovieDetails(movieID: String, completion: @escaping ((MovieModel?) -> Void)) -> Void {
-        restAPI.fetchMovieModel(movieID: movieID, completion: completion)
-    }
-    
-    func getMovieAtIndex(atIndex index: Int) -> MovieModel? {
-        guard let movies = movies else {
-            return nil
+    var movies : [MovieModel]? = nil {
+        didSet{
+            if movies != nil{
+                viewDelegate?.movieListDidChanged(success: true)
+            }
+            else {
+                viewDelegate?.movieListDidChanged(success: false)
+            }
         }
-        return movies[index]
+    }
+    
+    init(service: RestAPI, title:String) {
+        self.restAPI = service
+        self.search = title
+    }
+    
+    func fetchMovies(){
+        restAPI.fetchMovieModelList(search:self.search, completion:{ [weak self] (movies) in
+            self?.movies = movies
+        })
+    }
+    
+    func getMovie(at index: Int) -> MovieModel? {
+        return movies?[index]
     }
     
     func numberOfMovies() -> Int {
         return movies?.count ?? 0
+    }
+    
+    func didSelectRow(at index: Int) {
+        if let movie = movies?[index]{
+            self.viewDelegate?.loadMovieDetails(movie:movie)
+        }
     }
     
     func createMovie(withText title: String, year: String, poster: String) -> Void {

@@ -8,7 +8,7 @@
 
 import UIKit
 import PureLayout
-
+/*
 protocol TableViewFooterViewDelegate: class {
     func movieCreated(withText title: String, year: String, poster: String)
 }
@@ -70,3 +70,4 @@ class MoviesTableViewFooter: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+*/

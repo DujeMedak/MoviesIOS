@@ -9,7 +9,7 @@
 import UIKit
 import PureLayout
 
-class MoviesTableSectionHeader: UIView {
+class MoviesTableHeaderView: UIView {
     
     var titleLabel: UILabel!
     
@@ -28,5 +28,9 @@ class MoviesTableSectionHeader: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setTitle(title: String) {
+        self.titleLabel.text = title
     }
 }

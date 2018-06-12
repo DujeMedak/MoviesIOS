@@ -8,12 +8,19 @@
 
 import Foundation
 
+protocol SingleMovieViewModelType {
+    var movie: MovieModel {get}
+    weak var viewDelegate: MovieDetailsDelegate? {get set}
+}
 
-class SingleMovieViewModel {
+class SingleMovieViewModel: SingleMovieViewModelType{
+    var movie: MovieModel
+    let restAPI: RestAPI
     
-    let movie: MovieModel
+    weak var viewDelegate: MovieDetailsDelegate?
     
-    init(movie: MovieModel) {
+    init(service: RestAPI, movie: MovieModel) {
+        self.restAPI = service
         self.movie = movie
     }
     
@@ -25,7 +32,7 @@ class SingleMovieViewModel {
         return movie.year
     }
     
-    var plot: String {
+    var plot: String{
         if let plot = movie.plot{
             return plot + "\n"
         }
@@ -42,6 +49,16 @@ class SingleMovieViewModel {
     
     var imageUrl: URL? {
         return URL(string: movie.poster)
+    }
+    
+    func fetchMovieDetails(){
+        restAPI.fetchMovieModel(movieID: movie.id, completion:{ [weak self] (movie) in
+            if let newMovie = movie{
+                self?.movie = newMovie
+                self?.viewDelegate?.searchResultsDidChanged()
+            }
+            //self?.viewDelegate?.searchResultsDidChanged()
+        })
     }
     
     public func saveNewPlot(newPlot:String) -> MovieModel?{

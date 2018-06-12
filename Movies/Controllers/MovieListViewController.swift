@@ -8,18 +8,23 @@
 
 import UIKit
 
+protocol MovieListDelegate:NSObjectProtocol {
+    func movieListDidChanged(success:Bool)
+    func loadMovieDetails(movie: MovieModel)
+}
+
 class MovieListViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
-    
-    var refreshControl: UIRefreshControl!
-    var tableFooterView: MoviesTableViewFooter!
+    var tableHeaderView: MoviesTableHeaderView!
+    var spinnerView: UIView?
     var viewModel: MoviesViewModel!
     let cellReuseIdentifier = "cellReuseIdentifier"
     
     convenience init(viewModel: MoviesViewModel) {
         self.init()
         self.viewModel = viewModel
+        self.viewModel.viewDelegate = self
     }
     
     override func viewDidLoad() {
@@ -29,28 +34,20 @@ class MovieListViewController: UIViewController{
     }
     
     func setupTableView() {
+        tableHeaderView = MoviesTableHeaderView()
+        tableHeaderView.setTitle(title: "Results")
+        tableView.tableFooterView = UIView()
+        
         tableView.backgroundColor = UIColor.lightGray
         tableView.delegate = self
         tableView.dataSource = self
         tableView.separatorStyle = .singleLine
-        
-        refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(MovieListViewController.refresh), for: UIControlEvents.valueChanged)
-        tableView.refreshControl = refreshControl
-        
         tableView.register(UINib(nibName: "MovieTableViewCell", bundle: nil), forCellReuseIdentifier: cellReuseIdentifier)
     }
     
     func setupData() {
-        /*viewModel.fetchMovies{ [weak self] (movies) in
-         self?.refresh()
-         }*/
-        self.refresh()
-    }
-    
-    @objc func refresh() {
-        tableView.reloadData()
-        refreshControl.endRefreshing()
+        spinnerView = MovieListViewController.displaySpinner(onView: self.view)
+        viewModel.fetchMovies()
     }
 }
 
@@ -60,31 +57,16 @@ extension MovieListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = MoviesTableSectionHeader()
-        return view
+        return tableHeaderView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50.0
     }
     
-    func fetchAndLoadNewView(movieID: String) {
-        let sv = MovieDetailsViewController.displaySpinner(onView: self.view)
-        self.viewModel.fetchMovieDetails(movieID: movieID, completion: { [weak self] (movie) in
-            if let fetchedMovie = movie{
-                let smvm = SingleMovieViewModel(movie:fetchedMovie)
-                let vc = MovieDetailsViewController(viewModel: smvm)
-                MovieDetailsViewController.removeSpinner(spinner: sv)
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
-        })
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if let movie = viewModel.getMovieAtIndex(atIndex: indexPath.row){
-            fetchAndLoadNewView(movieID: movie.id)
-        }
+        viewModel.didSelectRow(at: indexPath.row)
     }
 }
 
@@ -92,11 +74,12 @@ extension MovieListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! MovieTableViewCell
         
-        if let movie = viewModel.getMovieAtIndex(atIndex: indexPath.row) {
+        if let movie = viewModel.getMovie(at: indexPath.row) {
             cell.setup(withMovie: movie)
         }
         return cell
     }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -107,10 +90,35 @@ extension MovieListViewController: UITableViewDataSource {
     }
 }
 
-extension MovieDetailsViewController {
+extension MovieListViewController: MovieListDelegate{
+    
+    func movieListDidChanged(success:Bool) {
+        if let sv = spinnerView {
+            MovieListViewController.removeSpinner(spinner: sv)
+        }
+        
+        if !success{
+            tableHeaderView.setTitle(title: "No results for " + viewModel.search)
+            tableView.tableFooterView = UIView()
+        }
+        else{
+            tableView.reloadData()
+            tableHeaderView.setTitle(title: "Results of searching " + viewModel.search)
+            tableView.tableFooterView = nil
+        }
+    }
+    
+    func loadMovieDetails(movie: MovieModel) {
+        let smvm = SingleMovieViewModel(service: CombinedMovieAPI(), movie: movie)
+        let vc = MovieDetailsViewController(viewModel: smvm)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension MovieListViewController {
     class func displaySpinner(onView : UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
         let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
         ai.startAnimating()
         ai.center = spinnerView.center
