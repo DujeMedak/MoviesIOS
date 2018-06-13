@@ -10,7 +10,7 @@ import UIKit
 
 class EditViewController: UIViewController {
     
-    weak var editDelegate:EditViewControllerDelegate?
+    weak var editDelegate:EditMoviePlotDelegate?
     @IBOutlet weak var movieDescriptionView: UITextView!
     var movieDescription:String = ""
     
@@ -21,7 +21,7 @@ class EditViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        editDelegate?.plotAndSaveEdited(withText: movieDescriptionView.text)
+        editDelegate?.saveEdited(plot: movieDescriptionView.text)
     }
 }
 

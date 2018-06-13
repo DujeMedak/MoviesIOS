@@ -46,12 +46,6 @@ class CombinedMovieAPI:RestAPI{
         else{
             self.offlineAPI.fetchMovieModelList(search: search, completion: completion)
         }
-        
     }
-    
-    func getMovie(title: String) -> Movie? {
-        return nil
-    }
-    
 }
 

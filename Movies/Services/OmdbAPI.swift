@@ -41,7 +41,6 @@ class OmdbAPI:RestAPI{
                 
                 if  let value = response.result.value as? [String: Any],
                     let movie = MovieModel.createFrom(json: value){
-                    print("Created movie:", movie)
                     try? AERecord.Context.main.save()
                     completion(movie)
                     return
@@ -68,8 +67,7 @@ class OmdbAPI:RestAPI{
                     completion(nil)
                     return
                 }
-                print("result of querry:",response)
-                
+                //print("result of querry:",response)
                 if
                     let value = response.result.value as? [String: Any],
                     let results = value["Search"] as? [[String: Any]] {
@@ -82,17 +80,12 @@ class OmdbAPI:RestAPI{
                     
                     completion(movies)
                     return
-                } else {
+                }
+                else {
                     completion(nil)
                     return
                 }
         }
-    }
-    init() {
-    }
-    
-    func getMovie(title: String) -> Movie? {
-        return nil
     }
     
 }

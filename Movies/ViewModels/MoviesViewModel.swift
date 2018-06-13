@@ -59,17 +59,5 @@ class MoviesViewModel: MoviesViewModelType {
             self.viewDelegate?.loadMovieDetails(movie:movie)
         }
     }
-    
-    func createMovie(withText title: String, year: String, poster: String) -> Void {
-        let json: [String: Any] = [
-            "Title": title,
-            "Year": year,
-            "Poster": poster
-        ]
-        
-        if let _ = MovieModel.createFrom(json: json) {
-            try? AERecord.Context.main.save()
-        }
-    }
 }
 

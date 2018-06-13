@@ -48,7 +48,7 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="inception" translatesAutoresizingMaskIntoConstraints="NO" id="0yz-zx-50e">
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0yz-zx-50e">
                     <rect key="frame" x="120.5" y="20" width="133" height="128"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="0yz-zx-50e" secondAttribute="height" multiplier="1:1" constant="5" id="g5m-yh-2QJ"/>
@@ -113,7 +113,4 @@
             <point key="canvasLocation" x="35.5" y="79.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="inception" width="675" height="1000"/>
-    </resources>
 </document>

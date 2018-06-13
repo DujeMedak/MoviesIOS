@@ -52,6 +52,7 @@ class MovieListViewController: UIViewController{
 }
 
 extension MovieListViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
@@ -71,6 +72,7 @@ extension MovieListViewController: UITableViewDelegate {
 }
 
 extension MovieListViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as! MovieTableViewCell
         
@@ -79,7 +81,6 @@ extension MovieListViewController: UITableViewDataSource {
         }
         return cell
     }
-    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -127,7 +128,6 @@ extension MovieListViewController {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }
-        
         return spinnerView
     }
     

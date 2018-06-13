@@ -13,7 +13,11 @@ protocol SingleMovieViewModelType {
     weak var viewDelegate: MovieDetailsDelegate? {get set}
 }
 
-class SingleMovieViewModel: SingleMovieViewModelType{
+protocol EditMoviePlotDelegate:NSObjectProtocol{
+    func saveEdited(plot: String)
+}
+
+class SingleMovieViewModel:NSObject, SingleMovieViewModelType{
     var movie: MovieModel
     let restAPI: RestAPI
     
@@ -39,12 +43,18 @@ class SingleMovieViewModel: SingleMovieViewModelType{
         return "Plot is not available for this movie...\n"
     }
     
-    var genre: String? {
-        return movie.genre?.uppercased()
+    var genre: String {
+        if let genre = movie.genre{
+            return genre
+        }
+        return "Unknown"
     }
     
     var director: String? {
-        return movie.director?.uppercased()
+        if let director = movie.director{
+            return director
+        }
+        return "Unknown"
     }
     
     var imageUrl: URL? {
@@ -57,13 +67,16 @@ class SingleMovieViewModel: SingleMovieViewModelType{
                 self?.movie = newMovie
                 self?.viewDelegate?.searchResultsDidChanged()
             }
-            //self?.viewDelegate?.searchResultsDidChanged()
         })
     }
-    
-    public func saveNewPlot(newPlot:String) -> MovieModel?{
-        return MovieModel.updatePlot(movieID: movie.id, newPlot: newPlot)
+}
+
+extension SingleMovieViewModel:EditMoviePlotDelegate{
+    func saveEdited(plot: String){
+        if let updatedMovie = MovieModel.updatePlot(movieID: movie.id, newPlot: plot){
+            self.movie = updatedMovie
+            viewDelegate?.moviePlotChanged()
+        }
     }
- 
 }
 

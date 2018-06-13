@@ -30,16 +30,19 @@ class DataCoreAPI:RestAPI{
         let context = AERecord.Context.main
         request.predicate = NSPredicate(format: "title contains[c] %@", search)
         request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
         guard let movies = try? context.fetch(request) else{
             print("Error while fetching movies with title", search)
             completion(nil)
             return
         }
-        completion(movies)
+        
+        if movies.count > 1 {
+            completion(movies)
+        }
+        else{
+            completion(nil)
+        }
+        
     }
-    
-    func getMovie(title: String) -> Movie? {
-        return nil
-    }
-    
 }

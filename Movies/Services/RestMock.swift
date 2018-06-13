@@ -10,39 +10,37 @@ import Foundation
 
 class RestMock:RestAPI{
     
-    var movies = [String: Movie]()
+    var movies:[MovieModel]?
     
     init() {
-        let author1 = Person(name: "Christopher", surname: "Nolan")
-        let movie1 = Movie(title: "Inception",
-                           uri:"https://ia.media-imdb.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_UY1200_CR90,0,630,1200_AL_.jpg",
-                           description: "A thief, who steals corporate secrets through the use of dream-sharing technology, is given the inverse task of planting an idea into the mind of a CEO.\n",
-                           year: 2010,
-                           genre: Genre.action,
-                           author: author1)
+        let movie1 = MovieModel()
+        movie1.title = "Film 1"
+        movie1.id = "1"
+        movie1.poster = "http://www.soundset.hr/datastore/imagestore/620_400/620_400_1379001889miso_kovac.jpg"
+        movie1.plot = "vrlo zanimljiva radnja"
+        movie1.director = "Mate Mišo"
+        movie1.genre = "komedija"
+        movie1.year = "1984"
         
-        let author2 = Person(name: "Damien", surname: "Chazelle")
-        let movie2 = Movie(title: "Whiplash",
-                           uri:"https://upload.wikimedia.org/wikipedia/en/0/01/Whiplash_poster.jpg",
-                           description: "A promising young drummer enrolls at a cut-throat music conservatory where his dreams of greatness are mentored by an instructor who will stop at nothing to realize a student's potential.\n",
-                           year: 2014,
-                           genre: Genre.drama,
-                           author: author2)
+        let movie2 = MovieModel()
+        movie2.title = "Film 2"
+        movie2.id = "2"
+        movie2.poster = "https://lajoyalink.com/wp-content/uploads/2018/03/Movie.jpg"
+        movie2.plot = "još jedna vrlo zanimljiva radnja"
+        movie2.director = "Ime Prezime"
+        movie2.genre = "akcija"
+        movie2.year = "2001"
         
-        movies[movie1.title]=movie1
-        movies[movie2.title]=movie2
-    }
-    
-    func getMovie(title: String) -> Movie? {
-        return movies[title]
+        movies?.append(movie1)
+        movies?.append(movie2)
     }
     
     func fetchMovieModel(movieID: String, completion: @escaping ((MovieModel?) -> Void)) -> Void {
-        
+        completion(movies?[0])
     }
     
     func fetchMovieModelList(search: String, completion: @escaping (([MovieModel]?) -> Void)){
-        
+        completion(movies)
     }
     
 }

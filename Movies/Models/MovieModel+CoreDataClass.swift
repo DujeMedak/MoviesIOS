@@ -19,18 +19,14 @@ public class MovieModel: NSManagedObject {
             let poster = json["Poster"] as? String,
             let id = json["imdbID"] as? String{
             
-            // TODO this part needs to be changed if the attributes in the class movie are changing through time
-            if let movie = movieExists(movieID: id),
-                movie.plot == nil{
-                if let plot = json["Plot"] as? String{
-                    movie.plot = plot
+            //updates existing movie from core data
+            if let movie = movieExists(movieID: id){
+                // So that it doesn't get overwritten when fetching from internet
+                if movie.plot == nil{
+                    movie.plot = json["Plot"] as? String
                 }
-                
-                if let genre = json["Genre"] as? String,
-                    let director = json["Director"] as? String{
-                    movie.genre = genre
-                    movie.director = director
-                }
+                movie.genre = json["Genre"] as? String
+                movie.director = json["Director"] as? String
                 return movie
             }
             else{

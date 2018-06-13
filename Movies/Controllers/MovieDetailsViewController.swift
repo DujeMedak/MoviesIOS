@@ -9,15 +9,13 @@
 import UIKit
 import Kingfisher
 
-protocol EditViewControllerDelegate:NSObjectProtocol{
-    func plotAndSaveEdited(withText text: String)
-}
 
 protocol MovieDetailsDelegate:NSObjectProtocol {
     func searchResultsDidChanged()
+    func moviePlotChanged()
 }
 
-class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
+class MovieDetailsViewController: UIViewController{
     
     var viewModel: SingleMovieViewModel!
     var img: UIImage?
@@ -58,10 +56,6 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if let unwrapedModel = viewModel{
-            movieDescription.text = unwrapedModel.plot
-        }
         //deselecting the edit button from the navigation bar (just color)
         self.navigationController?.navigationBar.tintAdjustmentMode = .normal
         self.navigationController?.navigationBar.tintAdjustmentMode = .automatic
@@ -70,7 +64,7 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
     @objc func onEditButtonTap(sender: AnyObject) {
         if  let unwrappedModel = viewModel{
             let vc = EditViewController()
-            vc.editDelegate = self
+            vc.editDelegate = viewModel
             vc.movieDescription = unwrappedModel.plot
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -80,25 +74,12 @@ class MovieDetailsViewController: UIViewController , EditViewControllerDelegate{
         let vc = ImageDetailViewController(movieImg: self.img)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    func plotAndSaveEdited(withText text: String){
-        if let unwrappedModel = viewModel{
-            if let updatedMovie = unwrappedModel.saveNewPlot(newPlot: text){
-                    unwrappedModel.movie.plot = updatedMovie.plot
-            }
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
 }
 
 extension MovieDetailsViewController {
     class func displaySpinner(onView : UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
+        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0)
         let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
         ai.startAnimating()
         ai.center = spinnerView.center
@@ -107,7 +88,6 @@ extension MovieDetailsViewController {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
         }
-        
         return spinnerView
     }
     
@@ -118,20 +98,17 @@ extension MovieDetailsViewController {
     }
 }
 
-
 extension MovieDetailsViewController: MovieDetailsDelegate{
     func searchResultsDidChanged() {
         movieTitle.text = viewModel.title
-        year.text = String(viewModel.year)
-        if let gen = viewModel.genre,
-            let dir = viewModel.director{
-            genre.text = gen
-            director.text = dir
-        }
+        year.text = viewModel.year
+        genre.text = viewModel.genre
+        director.text = viewModel.director
         movieDescription.text = viewModel.plot
         if let sv = spinnerView {
             MovieListViewController.removeSpinner(spinner: sv)
         }
+        
         spinnerView = MovieDetailsViewController.displaySpinner(onView: movieImage)
         let url = viewModel.imageUrl
         movieImage.kf.setImage(with: url, completionHandler: {
@@ -141,5 +118,9 @@ extension MovieDetailsViewController: MovieDetailsDelegate{
                 MovieListViewController.removeSpinner(spinner: sv)
             }
         })
+    }
+    func moviePlotChanged(){
+        movieDescription.text = viewModel.plot
+        
     }
 }
