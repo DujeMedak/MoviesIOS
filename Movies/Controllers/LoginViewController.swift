@@ -11,17 +11,41 @@ import UIKit
 class LoginViewController: UIViewController {
 
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var usernameTextFieldConstraintX: NSLayoutConstraint!
+    @IBOutlet weak var passwordTextFieldConstraintX: NSLayoutConstraint!
+    @IBOutlet weak var loginButtonConstraintX: NSLayoutConstraint!
+    
+    var offsetX = CGFloat(200)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        offsetX = view.bounds.width
+        usernameTextFieldConstraintX.constant -= offsetX
+        passwordTextFieldConstraintX.constant -= offsetX
+        loginButtonConstraintX.constant -= offsetX
     }
     
-    func animateEntry(){}
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        animateEntry()
+    }
+    
+    func animateEntry(){
+        UIView.animate(withDuration: 0.75, delay: 0, options: .curveEaseOut, animations: {
+            self.usernameTextFieldConstraintX.constant += self.offsetX
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.6, delay: 0.2, options: .curveEaseOut, animations: {
+            self.passwordTextFieldConstraintX.constant += self.offsetX
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.5, delay: 0.35, options: .curveEaseOut, animations: {
+            self.loginButtonConstraintX.constant += self.offsetX
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+    }
     func animateExit(){}
     
     @IBAction func onLoginButtonTap(_ sender: Any) {

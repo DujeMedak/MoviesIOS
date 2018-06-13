@@ -12,10 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Movies" customModuleProvider="target">
             <connections>
-                <outlet property="loginButton" destination="XuF-Iz-din" id="b8t-kx-gHN"/>
-                <outlet property="passwordTextField" destination="D4V-7A-FnC" id="Kyn-Yl-CFH"/>
-                <outlet property="titleLabel" destination="DNQ-3Q-Lpz" id="GvX-3R-xdY"/>
-                <outlet property="usernameTextField" destination="cxP-Go-2v6" id="csg-Ls-38y"/>
+                <outlet property="loginButtonConstraintX" destination="v2n-iJ-gea" id="ZEy-0o-arj"/>
+                <outlet property="passwordTextFieldConstraintX" destination="qzC-j3-5Dp" id="Lwz-Kf-urn"/>
+                <outlet property="usernameTextFieldConstraintX" destination="bWi-Gi-3lA" id="0RA-79-CPN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
