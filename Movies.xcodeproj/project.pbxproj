@@ -20,6 +20,8 @@
 		A538C32120C9B9EA0055E366 /* MovieModel+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538C31F20C9B9E90055E366 /* MovieModel+CoreDataProperties.swift */; };
 		A538C32220C9B9EA0055E366 /* MovieModel+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538C32020C9B9E90055E366 /* MovieModel+CoreDataClass.swift */; };
 		A538C32420C9BF950055E366 /* OmdbAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A538C32320C9BF950055E366 /* OmdbAPI.swift */; };
+		A55F5F7D20D1733C009895D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55F5F7B20D1733C009895D0 /* LoginViewController.swift */; };
+		A55F5F7E20D1733C009895D0 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A55F5F7C20D1733C009895D0 /* LoginViewController.xib */; };
 		A5ADC5CF20C869A00088B6EB /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5ADC5CD20C869A00088B6EB /* MovieListViewController.swift */; };
 		A5ADC5D020C869A00088B6EB /* MovieListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5ADC5CE20C869A00088B6EB /* MovieListViewController.xib */; };
 		A5ADC5E720C8817F0088B6EB /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5ADC5E620C8817F0088B6EB /* MoviesViewModel.swift */; };
@@ -51,6 +53,8 @@
 		A538C31F20C9B9E90055E366 /* MovieModel+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MovieModel+CoreDataProperties.swift"; path = "/Users/dujemedak/Desktop/Movies2/Movies/Movies/Models/MovieModel+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		A538C32020C9B9E90055E366 /* MovieModel+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MovieModel+CoreDataClass.swift"; path = "/Users/dujemedak/Desktop/Movies2/Movies/Movies/Models/MovieModel+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		A538C32320C9BF950055E366 /* OmdbAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OmdbAPI.swift; sourceTree = "<group>"; };
+		A55F5F7B20D1733C009895D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A55F5F7C20D1733C009895D0 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		A5ADC5CD20C869A00088B6EB /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		A5ADC5CE20C869A00088B6EB /* MovieListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListViewController.xib; sourceTree = "<group>"; };
 		A5ADC5E620C8817F0088B6EB /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 				A5EA427720A98AF30086A6E6 /* ImageDetailViewController.xib */,
 				A51DB16F20A8EB3F00230295 /* MovieDetailsViewController.swift */,
 				A51DB17020A8EB3F00230295 /* MovieDetailsViewController.xib */,
+				A55F5F7B20D1733C009895D0 /* LoginViewController.swift */,
+				A55F5F7C20D1733C009895D0 /* LoginViewController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -266,6 +272,7 @@
 				A5F0A8C220AA350D00E71100 /* EditViewController.xib in Resources */,
 				A51DB17220A8EB3F00230295 /* MovieDetailsViewController.xib in Resources */,
 				A51DB15E20A88A2600230295 /* SearchMovieViewController.xib in Resources */,
+				A55F5F7E20D1733C009895D0 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +330,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A55F5F7D20D1733C009895D0 /* LoginViewController.swift in Sources */,
 				A538C32420C9BF950055E366 /* OmdbAPI.swift in Sources */,
 				A5EADB7A20C9170A00CB90E1 /* SingleMovieViewModel.swift in Sources */,
 				A538C32120C9B9EA0055E366 /* MovieModel+CoreDataProperties.swift in Sources */,

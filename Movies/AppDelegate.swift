@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         try? AERecord.loadCoreDataStack()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        let vc = SearchMovieViewController()
+        let vc = LoginViewController()
         let nvc = UINavigationController(rootViewController: vc)
         nvc.navigationBar.isTranslucent = false
         window?.rootViewController = nvc
