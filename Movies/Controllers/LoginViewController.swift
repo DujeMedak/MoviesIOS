@@ -18,6 +18,7 @@ class LoginViewController: UIViewController {
     // constraints for vertical movement animations
     var usernameTextFieldVerticalSpacing2, passwordTextFieldVerticalSpacing2, loginButtonVerticalSpacing2: NSLayoutConstraint?
     
+    @IBOutlet weak var appTitleLabel: UILabel!
     @IBOutlet weak var appTitleVerticalSpacing: NSLayoutConstraint!
     
     @IBOutlet weak var usernameTextField: UITextField!
@@ -35,11 +36,21 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         offsetX = view.bounds.width
+        setInitialStatesOfViews()
+    }
+    
+    func setInitialStatesOfViews(){
         // remove views from screen (for entry animation)
         usernameTextFieldConstraintX.constant -= offsetX
         passwordTextFieldConstraintX.constant -= offsetX
         loginButtonConstraintX.constant -= offsetX
-        
+        usernameTextField.alpha = 0
+        usernameTextField.layer.borderColor = UIColor.black.withAlphaComponent(0).cgColor
+        passwordTextField.alpha = 0
+        passwordTextField.layer.borderColor = UIColor.black.withAlphaComponent(0).cgColor
+        loginButton.alpha = 0
+        loginButton.layer.borderColor = UIColor.black.withAlphaComponent(0).cgColor
+        self.appTitleLabel.transform = CGAffineTransform(scaleX: 0, y: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,17 +60,31 @@ class LoginViewController: UIViewController {
     
     func animateEntry(){
         UIView.animate(withDuration: 0.75, delay: 0, options: .curveEaseOut, animations: {
+            self.appTitleLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.75, delay: 0, usingSpringWithDamping: CGFloat(0.6),
+                       initialSpringVelocity: CGFloat(0.15), options: .curveEaseOut, animations: {
             self.usernameTextFieldConstraintX.constant += self.offsetX
+            self.usernameTextField.alpha = 1
+            self.usernameTextField.layer.borderColor = UIColor.black.withAlphaComponent(1).cgColor
             self.view.layoutIfNeeded()
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.6, delay: 0.2, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.75, delay: 0.15, usingSpringWithDamping: CGFloat(0.6),
+                       initialSpringVelocity: CGFloat(0.15), options: .curveEaseOut, animations: {
             self.passwordTextFieldConstraintX.constant += self.offsetX
+            self.passwordTextField.alpha = 1
+            self.passwordTextField.layer.borderColor = UIColor.black.withAlphaComponent(1).cgColor
             self.view.layoutIfNeeded()
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.5, delay: 0.35, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.75, delay: 0.3, usingSpringWithDamping: CGFloat(0.6),
+                       initialSpringVelocity: CGFloat(0.15), options: .curveEaseOut, animations: {
             self.loginButtonConstraintX.constant += self.offsetX
+            self.loginButton.alpha = 1
+            self.loginButton.layer.borderColor = UIColor.black.withAlphaComponent(1).cgColor
             self.view.layoutIfNeeded()
         }, completion: nil)
     }
@@ -80,23 +105,23 @@ class LoginViewController: UIViewController {
         self.loginButtonVerticalSpacing.isActive = false
         self.loginButtonVerticalSpacing2?.isActive = true
         
-        UIView.animate(withDuration: 0.9, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
             self.appTitleVerticalSpacing.constant -= self.view.bounds.height
             self.view.layoutIfNeeded()
         }, completion: nil)
         
         
-        UIView.animate(withDuration: 0.8, delay: 0.05, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.05, options: .curveEaseOut, animations: {
             self.usernameTextFieldVerticalSpacing2?.constant -= self.view.bounds.height
             self.view.layoutIfNeeded()
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.7, delay: 0.1, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveEaseOut, animations: {
             self.passwordTextFieldVerticalSpacing2?.constant -= self.view.bounds.height
             self.view.layoutIfNeeded()
         }, completion: nil)
         
-        UIView.animate(withDuration: 0.6, delay: 0.15, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.15, options: .curveEaseOut, animations: {
             self.loginButtonVerticalSpacing2?.constant -= self.view.bounds.height
             self.view.layoutIfNeeded()
         }, completion: { (finished: Bool) in

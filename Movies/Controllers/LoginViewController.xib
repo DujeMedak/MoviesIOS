@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Movies" customModuleProvider="target">
             <connections>
+                <outlet property="appTitleLabel" destination="DNQ-3Q-Lpz" id="8Vf-pq-483"/>
                 <outlet property="appTitleVerticalSpacing" destination="zoi-y6-AF0" id="m9c-cu-Mvh"/>
                 <outlet property="loginButton" destination="XuF-Iz-din" id="Ns8-AB-5vU"/>
                 <outlet property="loginButtonConstraintX" destination="v2n-iJ-gea" id="ZEy-0o-arj"/>
