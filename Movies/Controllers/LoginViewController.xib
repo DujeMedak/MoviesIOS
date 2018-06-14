@@ -12,9 +12,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Movies" customModuleProvider="target">
             <connections>
+                <outlet property="appTitleVerticalSpacing" destination="zoi-y6-AF0" id="m9c-cu-Mvh"/>
+                <outlet property="loginButton" destination="XuF-Iz-din" id="Ns8-AB-5vU"/>
                 <outlet property="loginButtonConstraintX" destination="v2n-iJ-gea" id="ZEy-0o-arj"/>
+                <outlet property="loginButtonVerticalSpacing" destination="zEi-we-GXy" id="scJ-eh-piF"/>
+                <outlet property="passwordTextField" destination="D4V-7A-FnC" id="0MW-be-ge4"/>
                 <outlet property="passwordTextFieldConstraintX" destination="qzC-j3-5Dp" id="Lwz-Kf-urn"/>
+                <outlet property="passwordTextFieldVerticalSpacing" destination="E9s-bl-ceD" id="YlZ-HK-g6O"/>
+                <outlet property="usernameTextField" destination="cxP-Go-2v6" id="1LU-Wo-hYm"/>
                 <outlet property="usernameTextFieldConstraintX" destination="bWi-Gi-3lA" id="0RA-79-CPN"/>
+                <outlet property="usernameTextFieldVerticalSpacing" destination="MGO-pK-70H" id="YcI-8n-EvD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
