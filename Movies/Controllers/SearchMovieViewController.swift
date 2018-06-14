@@ -16,6 +16,8 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.searchText.delegate = self as UITextFieldDelegate
+        button_search.layer.cornerRadius = 5
+        button_search.clipsToBounds = true
         setInitialStatesOfViews()
     }
     

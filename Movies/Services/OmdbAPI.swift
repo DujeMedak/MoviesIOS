@@ -59,6 +59,7 @@ class OmdbAPI:RestAPI{
                     completion(nil)
                     return
                 }
+                //print("Response:",response)
                 if  let value = response.result.value as? [String: Any],
                     let results = value["Search"] as? [[String: Any]] {
                     let movies = results.map({ json -> MovieModel? in
