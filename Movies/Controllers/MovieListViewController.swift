@@ -35,7 +35,7 @@ class MovieListViewController: UIViewController{
     
     func setupTableView() {
         tableHeaderView = MoviesTableHeaderView()
-        tableHeaderView.setTitle(title: "Results")
+        tableHeaderView.setTitle(title: "Searching movies...")
         tableView.tableFooterView = UIView()
         
         tableView.backgroundColor = UIColor.lightGray

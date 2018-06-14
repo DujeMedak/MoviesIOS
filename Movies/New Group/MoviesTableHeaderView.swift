@@ -18,7 +18,6 @@ class MoviesTableHeaderView: UIView {
         
         backgroundColor = UIColor.lightGray
         titleLabel = UILabel()
-        titleLabel.text = "Results"
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = UIColor.darkGray
         self.addSubview(titleLabel)

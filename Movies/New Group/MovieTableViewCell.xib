@@ -21,14 +21,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eC3-uh-i5K">
-                        <rect key="frame" x="16" y="11" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poi-fC-89l">
-                        <rect key="frame" x="16" y="44" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <rect key="frame" x="16" y="11" width="44" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -39,14 +33,22 @@
                             <constraint firstAttribute="width" secondItem="pNk-Xt-V3l" secondAttribute="height" multiplier="1:1" id="LmL-8h-lWb"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Poi-fC-89l">
+                        <rect key="frame" x="16" y="67.5" width="48" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="eC3-uh-i5K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="Bik-MA-wWJ"/>
                     <constraint firstAttribute="trailing" secondItem="pNk-Xt-V3l" secondAttribute="trailing" constant="16" id="DXH-1c-pL2"/>
                     <constraint firstItem="Poi-fC-89l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="GC8-lW-dkP"/>
+                    <constraint firstAttribute="bottom" secondItem="Poi-fC-89l" secondAttribute="bottom" constant="8" id="P85-rv-Hqd"/>
                     <constraint firstItem="pNk-Xt-V3l" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="XD2-Hh-I0e"/>
-                    <constraint firstItem="Poi-fC-89l" firstAttribute="top" secondItem="eC3-uh-i5K" secondAttribute="bottom" constant="12" id="hlx-9u-t75"/>
                     <constraint firstItem="eC3-uh-i5K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="oST-mE-Ka9"/>
+                    <constraint firstItem="pNk-Xt-V3l" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Poi-fC-89l" secondAttribute="trailing" constant="16" id="uaW-AF-1Ws"/>
+                    <constraint firstItem="pNk-Xt-V3l" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eC3-uh-i5K" secondAttribute="trailing" constant="16" id="zSW-dW-bol"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
