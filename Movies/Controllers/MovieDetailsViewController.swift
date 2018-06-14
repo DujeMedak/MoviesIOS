@@ -81,12 +81,12 @@ extension MovieDetailsViewController {
         let spinnerView = UIView.init(frame: onView.bounds)
         spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0)
         let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
-        ai.startAnimating()
         ai.center = spinnerView.center
-        
+        ai.startAnimating()
         DispatchQueue.main.async {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
+            spinnerView.center = onView.convert(onView.center, from:onView.superview)
         }
         return spinnerView
     }

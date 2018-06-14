@@ -11,7 +11,6 @@ import UIKit
 class ImageDetailViewController: UIViewController{
 
     var movieImg:UIImage?
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var movieImage: UIImageView!
     

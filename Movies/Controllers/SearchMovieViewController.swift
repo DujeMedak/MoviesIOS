@@ -32,11 +32,13 @@ class SearchMovieViewController: UIViewController, UITextFieldDelegate {
     
     func animateEntry(){
         let duration = 0.4
+        
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             self.searchText.alpha = 1
             self.searchText.layer.borderColor = UIColor.black.withAlphaComponent(1).cgColor
             self.view.layoutIfNeeded()
         }, completion: nil)
+        
         UIView.animate(withDuration: duration, delay: 0, options: .curveEaseOut, animations: {
             self.button_search.alpha = 1
             self.button_search.layer.borderColor = UIColor.black.withAlphaComponent(1).cgColor

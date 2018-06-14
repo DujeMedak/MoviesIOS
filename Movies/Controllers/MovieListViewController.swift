@@ -37,7 +37,6 @@ class MovieListViewController: UIViewController{
         tableHeaderView = MoviesTableHeaderView()
         tableHeaderView.setTitle(title: "Searching movies...")
         tableView.tableFooterView = UIView()
-        
         tableView.backgroundColor = UIColor.lightGray
         tableView.delegate = self
         tableView.dataSource = self
@@ -46,7 +45,7 @@ class MovieListViewController: UIViewController{
     }
     
     func setupData() {
-        spinnerView = MovieListViewController.displaySpinner(onView: self.view)
+        spinnerView = MovieListViewController.displaySpinner(onView: self.tableView)
         viewModel.fetchMovies()
     }
     
@@ -141,10 +140,10 @@ extension MovieListViewController {
         let ai = UIActivityIndicatorView.init(activityIndicatorStyle: .whiteLarge)
         ai.startAnimating()
         ai.center = spinnerView.center
-        
         DispatchQueue.main.async {
             spinnerView.addSubview(ai)
             onView.addSubview(spinnerView)
+            spinnerView.center = onView.convert(onView.center, from:onView.superview)
         }
         return spinnerView
     }
